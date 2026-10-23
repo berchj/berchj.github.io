@@ -123,6 +123,7 @@ def head(title, description, url, image, extra=''):
 <title>{e(title)}</title>
 <meta name="description" content="{e(description)}">
 <link rel="canonical" href="{url}">
+<meta name="google-site-verification" content="UphS3aDveMRVv07rEHt7og08iggwHPVThZJLNYE1Gpw">
 <meta property="og:type" content="website">
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(description)}">
