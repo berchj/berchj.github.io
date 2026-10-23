@@ -270,3 +270,37 @@ footer .wrap {
 	gap: 10px 24px;
 	justify-content: space-between;
 }
+
+/* ---------- tool pages ---------- */
+
+.crumbs {
+	margin-top: 18px;
+	font-size: 14px;
+	color: var(--muted);
+}
+
+.big-emoji { font-size: 64px; line-height: 1; }
+
+.keys {
+	margin-top: 22px;
+	font-size: 15px;
+	color: var(--muted);
+}
+
+.grid.mini { grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; }
+
+.grid.mini .card { padding: 12px 14px; }
+
+.grid.mini h3 { margin: 4px 0 0; font-size: 16px; }
+
+.grid.mini .emoji { font-size: 22px; }
+
+.table { overflow-x: auto; }
+
+footer .tools {
+	flex-basis: 100%;
+	margin: 0 0 10px;
+	line-height: 1.9;
+}
+
+footer .tools a { color: var(--muted); }

@@ -8,11 +8,16 @@ import json
 from datetime import date
 from pathlib import Path
 
+from tools import POWERTOYS, TOOLS
+
 SITE = 'https://berchj.github.io'
 ROOT = Path(__file__).parent
 TODAY = date.today().isoformat()
 SUPPORT = 'https://cafecito.app/berchj'
 USDT = '0xc39dfD297BAf6ab305e267D153bf11d37de7faF6'
+VERSION = '0.1.2'
+# IndexNow (Bing, Yandex, Seznam...): the key file at the site root proves the site is ours.
+INDEXNOW_KEY = '7c1f4a2e9b8d4e60a3f5c2b1d0e9f8a7'
 
 # toolswitch: every tool in one app. Its code is private; the installers are published in this
 # public repository, the downloads for every page.
@@ -122,14 +127,22 @@ def head(title, description, url, image, extra=''):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{e(title)}</title>
 <meta name="description" content="{e(description)}">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <link rel="canonical" href="{url}">
 <meta name="google-site-verification" content="UphS3aDveMRVv07rEHt7og08iggwHPVThZJLNYE1Gpw">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="toolswitch">
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(description)}">
 <meta property="og:url" content="{url}">
 <meta property="og:image" content="{SITE}/img/{image}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{e(title)}">
+<meta name="twitter:description" content="{e(description)}">
+<meta name="twitter:image" content="{SITE}/img/{image}">
+<link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt">
 <link rel="icon" href="/img/toolswitch-64.png">
 <link rel="stylesheet" href="/style.css">
 {THEME}
@@ -138,13 +151,15 @@ def head(title, description, url, image, extra=''):
 
 def nav(current=None):
     current_attr = ' aria-current=page' if current == 'toolswitch' else ''
-    return f'<nav><div class="wrap"><a class="home" href="/"><img src="/img/toolswitch-64.png" alt="">toolswitch</a><a href="/toolswitch/"{current_attr}>The 18 tools</a><a href="{REPO_URL}/releases/latest">Download</a></div></nav>'
+    return f'<nav><div class="wrap"><a class="home" href="/"><img src="/img/toolswitch-64.png" alt="">toolswitch</a><a href="/toolswitch/"{current_attr}>The 18 tools</a><a href="/powertoys-alternative/"{" aria-current=page" if current == "powertoys" else ""}>vs PowerToys</a><a href="{REPO_URL}/releases/latest">Download</a></div></nav>'
 
 
 def footer():
     made = f'made by <a href="https://github.com/berchj">berchj</a>'
     code = f' · <a href="{REPO_URL}">source code</a> · MIT license' if OPEN_SOURCE else ''
+    tools = ' · '.join(f'<a href="/toolswitch/{t["slug"]}/">{t["name"]}</a>' for t in TOOLS)
     return f'''<footer><div class="wrap">
+<p class="tools">{tools}</p>
 <span>toolswitch is free · {made}{code}</span>
 <span>Like it? <a href="{SUPPORT}">☕ Buy me a coffee</a> · USDT (BEP20): <code>{USDT}</code></span>
 </div></footer>'''
@@ -175,6 +190,11 @@ def software_ld(name, description, url, image, keywords):
         'isAccessibleForFree': True,
         'author': {'@type': 'Person', 'name': 'berchj', 'url': 'https://github.com/berchj'},
         'keywords': keywords,
+        'softwareVersion': VERSION,
+        'featureList': [t['name'] for t in TOOLS],
+        'fileSize': '15 MB',
+        'memoryRequirements': '90 MB',
+        'publisher': {'@type': 'Person', 'name': 'berchj', 'url': 'https://github.com/berchj'},
     }
     if OPEN_SOURCE:
         ld['license'] = 'https://opensource.org/licenses/MIT'
@@ -186,8 +206,14 @@ def ld_scripts(*items):
     return ''.join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>\n' for x in items)
 
 
+TOOL_URL = {t['name']: f"/toolswitch/{t['slug']}/" for t in TOOLS}
+
+
 def cards(features):
-    return ''.join(f'<div class="card"><div class="emoji">{em}</div><h3>{t}</h3><p>{d}</p></div>' for em, t, d in features)
+    def card(em, t, d):
+        inner = f'<div class="emoji">{em}</div><h3>{t}</h3><p>{d}</p>'
+        return f'<a class="card" href="{TOOL_URL[t]}">{inner}</a>' if t in TOOL_URL else f'<div class="card">{inner}</div>'
+    return ''.join(card(*f) for f in features)
 
 
 NOTE = '<p class="note">First launch: the installers aren’t signed with a paid certificate yet. On Windows click <b>More info → Run anyway</b>; on macOS open <b>System Settings → Privacy &amp; Security → Open Anyway</b>.</p>'
@@ -261,6 +287,7 @@ def legacy_page(app):
 <section class="wrap">
 <h2>{app['tool']} in toolswitch</h2>
 <div class="grid">{cards(app['features'])}</div>
+<p><a href="{TOOL_URL[app['tool']]}">More about {app['tool']} →</a></p>
 <p>Plus 17 more tools — clipboard, text from screen, reminders, breaks, background remover, PDF signing and more. <a href="/toolswitch/">See them all</a>.</p>
 {NOTE}
 </section>
@@ -275,13 +302,15 @@ def legacy_page(app):
 def home_page():
     title = 'toolswitch — 18 free everyday tools in one app for Windows, Mac and Linux'
     description = TOOLSWITCH['description']
-    ld = {
+    site = {'@context': 'https://schema.org', '@type': 'WebSite', 'name': 'toolswitch', 'url': SITE + '/', 'description': description}
+    tools = {
         '@context': 'https://schema.org',
         '@type': 'ItemList',
-        'name': 'toolswitch',
-        'itemListElement': [{'@type': 'ListItem', 'position': 1, 'url': f'{SITE}/toolswitch/', 'name': 'toolswitch'}],
+        'name': 'The 18 tools in toolswitch',
+        'itemListElement': [{'@type': 'ListItem', 'position': i + 1, 'url': f'{SITE}/toolswitch/{t["slug"]}/', 'name': t['name']} for i, t in enumerate(TOOLS)],
     }
-    return f'''{head(title, description, SITE + '/', 'toolswitch-social.png', '<script type="application/ld+json">' + json.dumps(ld) + '</script>' + chr(10))}
+    ld = ld_scripts(site, software_ld('toolswitch', description, SITE + '/', 'toolswitch-icon.png', TOOLSWITCH['keywords']), tools)
+    return f'''{head(title, description, SITE + '/', 'toolswitch-social.png', ld)}
 <body class="toolswitch">
 {nav()}
 <main>
@@ -304,6 +333,160 @@ def home_page():
 '''
 
 
+def shortcut(key, plain=False):
+    """The tool's shortcut on each system."""
+    combos = [('Linux', 'Super+Shift'), ('Windows', 'Ctrl+Alt'), ('Mac', 'Cmd+Option')]
+    if plain:
+        return ', '.join(f'{c}+{key} on {os}' for os, c in combos)
+    kbd = lambda c: '+'.join(f'<code>{k}</code>' for k in (c + '+' + key).split('+'))
+    return ' · '.join(f'{kbd(c)} on {os}' for os, c in combos)
+
+
+def breadcrumb_ld(*items):
+    return {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        'itemListElement': [{'@type': 'ListItem', 'position': i + 1, 'name': n, 'item': u} for i, (n, u) in enumerate(items)],
+    }
+
+
+def faq_ld(faq):
+    return {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'mainEntity': [{'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in faq],
+    }
+
+
+def faq_html(faq):
+    return ''.join(f'<details><summary>{html.escape(q)}</summary><p>{html.escape(a)}</p></details>' for q, a in faq)
+
+
+def strip_tags(text):
+    import re
+    return re.sub(r'<[^>]+>', '', text)
+
+
+def tool_page(t):
+    url = f'{SITE}/toolswitch/{t["slug"]}/'
+    title = f'{t["title"]} | toolswitch'
+    app = software_ld(f'toolswitch — {t["name"]}', t['description'], url, 'toolswitch-icon.png', t['keywords'])
+    howto = {
+        '@context': 'https://schema.org',
+        '@type': 'HowTo',
+        'name': f'How to use {t["name"]} in toolswitch',
+        'step': [{'@type': 'HowToStep', 'position': i + 1, 'text': strip_tags(s)} for i, s in enumerate(t['steps'])],
+    }
+    crumbs = breadcrumb_ld(('toolswitch', f'{SITE}/toolswitch/'), (t['name'], url))
+    ld = ld_scripts(app, faq_ld(t['faq']), howto, crumbs)
+    points = ''.join(f'<div class="card"><h3>{a}</h3><p>{b}</p></div>' for a, b in t['points'])
+    steps = ''.join(f'<li>{s}</li>' for s in t['steps'])
+    replaces = ', '.join(t['replaces'])
+    others = ''.join(f'<a class="card" href="/toolswitch/{o["slug"]}/"><div class="emoji">{o["emoji"]}</div><h3>{o["name"]}</h3></a>' for o in TOOLS if o is not t)
+    return f'''{head(title, t['description'], url, 'toolswitch-social.png', ld + '<meta name="keywords" content="' + html.escape(t['keywords']) + '">' + chr(10))}
+<body class="toolswitch">
+{nav()}
+<main>
+<p class="crumbs wrap"><a href="/toolswitch/">toolswitch</a> › {t['name']}</p>
+<div class="hero wrap">
+<div class="big-emoji" aria-hidden="true">{t['emoji']}</div>
+<h1>{t['title']}</h1>
+<p class="tagline">{t['intro']}</p>
+{download_box()}
+<p class="keys">Shortcut: {shortcut(t['key'])}</p>
+</div>
+
+<section class="wrap">
+<h2>What it does</h2>
+<div class="grid">{points}</div>
+</section>
+
+<section class="wrap">
+<h2>How to use it</h2>
+<ol class="steps"><li>Download and install <a href="/toolswitch/">toolswitch</a>. It waits in your tray / top bar.</li>{steps}</ol>
+<p>Use it instead of: {replaces}.</p>
+{NOTE}
+</section>
+
+<section class="wrap">
+<h2>Questions</h2>
+{faq_html(t['faq'])}
+</section>
+
+<section class="wrap">
+<h2>17 more tools in the same app</h2>
+<div class="grid mini">{others}</div>
+</section>
+</main>
+{footer()}
+<script src="/download.js" defer></script>
+</body>
+</html>
+'''
+
+
+def powertoys_page():
+    p = POWERTOYS
+    url = f'{SITE}/{p["slug"]}/'
+    ld = ld_scripts(
+        software_ld('toolswitch', p['description'], url, 'toolswitch-icon.png', 'powertoys alternative, powertoys for mac, powertoys for linux, powertoys mac alternative, powertoys linux alternative'),
+        faq_ld(p['faq']),
+        breadcrumb_ld(('toolswitch', f'{SITE}/toolswitch/'), ('PowerToys alternative', url)),
+    )
+    rows = ''.join(f'<tr><td>{a}</td><td>{b}</td><td>{c}</td></tr>' for a, b, c in p['rows'])
+    return f'''{head(p['title'], p['description'], url, 'toolswitch-social.png', ld)}
+<body class="toolswitch">
+{nav('powertoys')}
+<main>
+<div class="hero wrap">
+<img class="icon" src="/img/toolswitch-icon.png" alt="toolswitch icon" width="96" height="96">
+<h1>{p['h1']}</h1>
+<p class="tagline">{p['intro']}</p>
+{download_box()}
+</div>
+
+<section class="wrap">
+<h2>PowerToys vs toolswitch</h2>
+<div class="table"><table>
+<thead><tr><th></th><th>PowerToys</th><th>toolswitch</th></tr></thead>
+<tbody>{rows}</tbody>
+</table></div>
+</section>
+
+<section class="wrap">
+<h2>Questions</h2>
+{faq_html(p['faq'])}
+</section>
+
+<section class="wrap">
+<h2>The 18 tools</h2>
+<div class="grid">{cards(TOOLSWITCH['features'])}</div>
+</section>
+</main>
+{footer()}
+<script src="/download.js" defer></script>
+</body>
+</html>
+'''
+
+
+def llms_full_txt():
+    """Everything on the site in one plain text file, for AI assistants."""
+    lines = [llms_txt().rstrip(), '', '# Each tool in detail', '']
+    for t in TOOLS:
+        lines += [f'## {t["name"]} — {t["title"]}', '', f'URL: {SITE}/toolswitch/{t["slug"]}/', f'Shortcut: {shortcut(t["key"], plain=True)}.', '', strip_tags(t['intro']), '']
+        lines += [f'- {a}: {strip_tags(b)}' for a, b in t['points']]
+        lines += ['', 'How to use it:'] + [f'{i + 1}. {strip_tags(s)}' for i, s in enumerate(t['steps'])]
+        lines += ['', f'Alternative to: {", ".join(t["replaces"])}.', '']
+        lines += [f'Q: {q}\nA: {a}' for q, a in t['faq']]
+        lines.append('')
+    p = POWERTOYS
+    lines += [f'# {p["h1"]}', '', f'URL: {SITE}/{p["slug"]}/', '', p['intro'], '', '| | PowerToys | toolswitch |', '|---|---|---|']
+    lines += [f'| {a} | {b} | {c} |' for a, b, c in p['rows']]
+    lines += [''] + [f'Q: {q}\nA: {a}' for q, a in p['faq']]
+    return '\n'.join(lines) + '\n'
+
+
 def llms_txt():
     a = TOOLSWITCH
     lines = [
@@ -316,8 +499,9 @@ def llms_txt():
     ]
     if OPEN_SOURCE:
         lines.append(f'- Source: {REPO_URL}')
+    lines += [f'- Compared with Microsoft PowerToys: {SITE}/{POWERTOYS["slug"]}/', f'- Full text of the site: {SITE}/llms-full.txt']
     lines += ['', '## Tools', '']
-    lines += [f'- {t}: {d}' for _, t, d in a['features']]
+    lines += [f'- [{t}]({SITE}{TOOL_URL[t]}): {d}' for _, t, d in a['features']]
     lines += ['', '## Questions', '']
     lines += [f'- {q} {ans}' for q, ans in a['faq']]
     lines += ['', '## Earlier apps', '']
@@ -327,15 +511,21 @@ def llms_txt():
 
 def main():
     (ROOT / 'index.html').write_text(home_page())
-    pages = {'toolswitch': toolswitch_page()} | {x['name']: legacy_page(x) for x in LEGACY}
+    pages = {'toolswitch': toolswitch_page(), POWERTOYS['slug']: powertoys_page()}
+    pages |= {f'toolswitch/{t["slug"]}': tool_page(t) for t in TOOLS}
+    pages |= {x['name']: legacy_page(x) for x in LEGACY}
     for name, page in pages.items():
         d = ROOT / name
-        d.mkdir(exist_ok=True)
+        d.mkdir(parents=True, exist_ok=True)
         (d / 'index.html').write_text(page)
     urls = [SITE + '/'] + [f'{SITE}/{name}/' for name in pages]
     (ROOT / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join(f'<url><loc>{u}</loc><lastmod>{TODAY}</lastmod></url>\n' for u in urls) + '</urlset>\n')
-    (ROOT / 'robots.txt').write_text(f'User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n')
+    # Search engines and AI assistants are all welcome: being quoted by them is the point.
+    bots = ['Googlebot', 'Bingbot', 'GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-SearchBot', 'Claude-User', 'PerplexityBot', 'Perplexity-User', 'Google-Extended', 'Applebot', 'Applebot-Extended', 'DuckAssistBot', 'CCBot']
+    (ROOT / 'robots.txt').write_text(''.join(f'User-agent: {b}\nAllow: /\n\n' for b in bots) + f'User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n')
     (ROOT / 'llms.txt').write_text(llms_txt())
+    (ROOT / 'llms-full.txt').write_text(llms_full_txt())
+    (ROOT / f'{INDEXNOW_KEY}.txt').write_text(INDEXNOW_KEY)
     (ROOT / '.nojekyll').write_text('')
     print('built', len(urls), 'pages')
 

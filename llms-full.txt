@@ -1,0 +1,482 @@
+# toolswitch
+
+> toolswitch: Free desktop app with 18 everyday tools: clipboard history, text from screen (OCR), wallpaper changer, reminders, Google Calendar, breaks, image and PDF compressor, background remover, PDF signing, audio to text, tidy downloads, backup, clean up, PC monitor, shut down timer, updates, security check and Jira. Offline, no account. Windows, macOS and Linux.
+
+- Website: https://berchj.github.io/toolswitch/
+- Download: https://github.com/berchj/toolswitch-releases/releases/latest
+- Compared with Microsoft PowerToys: https://berchj.github.io/powertoys-alternative/
+- Full text of the site: https://berchj.github.io/llms-full.txt
+
+## Tools
+
+- [Clipboard history](https://berchj.github.io/toolswitch/clipboard-history/): Everything you copy, text and images, one shortcut away. Search it and pin favorites.
+- [Text from screen](https://berchj.github.io/toolswitch/text-from-screen/): Select part of the screen and copy the text in it (OCR). Reads accents and ñ, in 30+ languages.
+- [Wallpapers](https://berchj.github.io/toolswitch/wallpaper-changer/): Pick your wallpapers and switch them with a shortcut or every few minutes.
+- [Reminders](https://berchj.github.io/toolswitch/reminders/): Write “in 20 min call Juan” and get a notification then. No calendar, no account.
+- [Calendar](https://berchj.github.io/toolswitch/calendar/): Your Google Calendar: today’s events, new ones with guests, and a heads-up 10 minutes before each.
+- [Breaks](https://berchj.github.io/toolswitch/break-reminder/): Rest your eyes every 20 minutes (20-20-20), or work with a Pomodoro timer.
+- [Compress files](https://berchj.github.io/toolswitch/compress-files/): Smaller JPG, PNG, PDF, Word, PowerPoint and Excel files. Your originals stay untouched.
+- [Remove background](https://berchj.github.io/toolswitch/remove-background/): Transparent PNG of any photo, with an AI model that runs on your computer.
+- [Sign PDF](https://berchj.github.io/toolswitch/sign-pdf/): Draw your signature once, drag it to its place on the page and sign PDFs without printing them.
+- [Audio to text](https://berchj.github.io/toolswitch/audio-to-text/): Voice notes, recordings and videos into text, offline, in ~100 languages (Whisper).
+- [Tidy downloads](https://berchj.github.io/toolswitch/tidy-downloads/): Moves what you download to its folder by type, by itself. Every move can be undone.
+- [Backup](https://berchj.github.io/toolswitch/backup/): Copies the folders you pick to another disk every day. Only what changed.
+- [Clean up](https://berchj.github.io/toolswitch/clean-up/): Shows what takes space — trash, caches, old downloads, big files — and frees it.
+- [Watch the PC](https://berchj.github.io/toolswitch/pc-monitor/): Warns when a disk is almost full or a program gets stuck eating the processor or memory.
+- [Shut down timer](https://berchj.github.io/toolswitch/shutdown-timer/): Shut down, restart or sleep later, at a time, or when the downloads finish.
+- [Security check](https://berchj.github.io/toolswitch/security-check/): Finds what’s risky in how your computer is set up — firewall, open ports, updates, encryption — and how to fix it. Claude can write the plan.
+- [Jira](https://berchj.github.io/toolswitch/jira/): The Jira issues assigned to you, and a heads-up when you get a new one.
+- [Updates](https://berchj.github.io/toolswitch/updates/): Updates the system and your apps with one click, and tells you when there’s something new.
+
+## Questions
+
+- What is toolswitch? A small desktop app with 18 everyday tools — clipboard history, screen OCR, wallpapers, reminders, Google Calendar, breaks, file compressor, background remover, PDF signing, audio to text, tidy downloads, backup, clean up, PC monitor, shut down timer, updates, security check and Jira — that waits in your tray.
+- Is it like Microsoft PowerToys? It’s in the same spirit, but it works the same on Windows, macOS and Linux, and it focuses on everyday tasks instead of developer tools.
+- Does it upload my files or what I copy? No. Everything runs on your computer. The AI models for text from screen, background removal and audio to text are downloaded once and then work offline. Only Calendar and Jira talk to Google and Atlassian, and Security check to Anthropic’s Claude if you add a key — and only when you connect them.
+- How heavy is it? The program is about 15 MB and uses about 90 MB of memory and almost no processor while it waits in the tray. A tool that’s off does nothing at all.
+- Can I use only some of the tools? Yes. Each tool has its own switch; the ones you turn off don’t run.
+- Is toolswitch free? Yes, it’s free to download and use. No account, no ads.
+
+## Earlier apps
+
+- wallswitch (wallpaper changer) is now the Wallpapers tool in toolswitch: https://berchj.github.io/wallswitch/
+- clipswitch (clipboard manager) is now the Clipboard history tool in toolswitch: https://berchj.github.io/clipswitch/
+- tinyswitch (image & document compressor) is now the Compress files tool in toolswitch: https://berchj.github.io/tinyswitch/
+
+# Each tool in detail
+
+## Clipboard history — Free clipboard history manager for Windows, Mac and Linux
+
+URL: https://berchj.github.io/toolswitch/clipboard-history/
+Shortcut: Super+Shift+V on Linux, Ctrl+Alt+V on Windows, Cmd+Option+V on Mac.
+
+Copy something, copy something else, and the first thing is gone — unless you keep a clipboard history. toolswitch remembers everything you copy, text and images, and brings it back with one shortcut.
+
+- Everything you copy: Text, links and images (screenshots too), newest first.
+- Search as you type: Type a few letters to find something you copied days ago, then press Enter to paste it.
+- Pin favorites: Pinned entries stay at the top and are never deleted: addresses, replies, account numbers.
+- Private: The history lives only on your computer. Nothing is uploaded.
+
+How to use it:
+1. Turn on Clipboard history in toolswitch.
+2. Copy as you always do.
+3. Press the shortcut, pick an entry with the arrows or by typing, and press Enter.
+
+Alternative to: Windows clipboard history (Win+V), Ditto, CopyQ, Maccy, Paste, GPaste.
+
+Q: How do I see my clipboard history on Linux or Mac?
+A: Neither Ubuntu nor macOS keeps one. Install toolswitch, turn on Clipboard history and press Super+Shift+V (Cmd+Option+V on Mac).
+Q: Does it save images?
+A: Yes: screenshots and copied pictures, with a preview. On Linux with Wayland it keeps text only for now.
+Q: Is my clipboard sent anywhere?
+A: No. The history is stored on your computer and never leaves it.
+
+## Text from screen — Copy text from screen or images (OCR) — free and offline
+
+URL: https://berchj.github.io/toolswitch/text-from-screen/
+Shortcut: Super+Shift+X on Linux, Ctrl+Alt+X on Windows, Cmd+Option+X on Mac.
+
+Text in an image, a video, a scanned PDF or an app that won’t let you select it? Press a shortcut, draw a box around it and the text is in your clipboard.
+
+- Any part of the screen: Images, videos, error messages, scanned documents, slides in a call.
+- Accents and symbols: Reads á, é, ñ, ü, ¿, € and 30+ languages written in the Latin alphabet.
+- Offline: The OCR model runs on your computer: nothing is uploaded, and it works without internet.
+- Fast: About half a second for a normal selection.
+
+How to use it:
+1. Turn on Text from screen in toolswitch.
+2. Press the shortcut and draw a box around the text.
+3. Paste it wherever you want.
+
+Alternative to: Windows PowerToys Text Extractor, Google Lens, Normcap, TextSniper, online OCR sites.
+
+Q: How do I copy text from an image on Linux?
+A: Install toolswitch, turn on Text from screen and press Super+Shift+X. Draw a box around the text and it’s copied.
+Q: Does it need internet?
+A: Only once, to download the model (a few MB). After that it works offline.
+Q: Which languages does it read?
+A: Languages written with the Latin alphabet: English, Spanish, Portuguese, French, German, Italian and 30+ more.
+
+## Wallpapers — Free automatic wallpaper changer for Windows, Mac and Linux
+
+URL: https://berchj.github.io/toolswitch/wallpaper-changer/
+Shortcut: Super+Shift+W on Linux, Ctrl+Alt+W on Windows, Cmd+Option+W on Mac.
+
+Pick your favorite wallpapers once and let them change by themselves, or jump to the next one with a shortcut.
+
+- Your wallpapers in a grid: Add folders or single images; click to add them to the rotation, double-click to set one now.
+- Automatic change: They rotate every few minutes or hours — you pick the interval.
+- Keyboard shortcuts: Random, next and previous wallpaper from anywhere.
+
+How to use it:
+1. Turn on Wallpapers in toolswitch and add a folder with images.
+2. Choose how often they change.
+3. Press the shortcut whenever you want a new one.
+
+Alternative to: Variety, Wallpaper Engine (for still images), John’s Background Switcher, Windows slideshow background.
+
+Q: How do I change the wallpaper automatically on Ubuntu?
+A: Install toolswitch, turn on Wallpapers, add a folder and pick an interval. It also works on Windows and macOS.
+Q: Can I change the wallpaper with a keyboard shortcut?
+A: Yes: Super+Shift+W (Ctrl+Alt+W on Windows, Cmd+Option+W on Mac). You can record your own keys.
+
+## Reminders — Quick desktop reminders: “in 20 min call Juan” — free
+
+URL: https://berchj.github.io/toolswitch/reminders/
+Shortcut: Super+Shift+R on Linux, Ctrl+Alt+R on Windows, Cmd+Option+R on Mac.
+
+For the small things that don’t deserve a calendar event. Press a shortcut, write what and when in plain words, and forget about it until it pops up.
+
+- Plain words: “in 20 min call Juan”, “at 17:30 send the report”, “tomorrow 9 pay rent”.
+- A notification with a sound: It shows up on your desktop at the right time.
+- Survives restarts: Reminders are saved; if the computer was off at that time, it shows up as soon as it’s back.
+- English or Spanish: “in 2 hours…”, “tomorrow 9:00 dentist”, “mañana a las 8 gym”, “en 20 min…”.
+
+How to use it:
+1. Press the shortcut.
+2. Write the reminder, for example in 20 min call Juan, and press Enter.
+3. You get a notification at that time.
+
+Alternative to: sticky notes, phone alarms, Google Keep reminders, Microsoft To Do for quick reminders.
+
+Q: Do I need an account?
+A: No. Reminders stay on your computer.
+Q: What if the computer was off at that time?
+A: The reminder shows up as soon as toolswitch starts again.
+
+## Calendar — Google Calendar on your desktop with meeting reminders
+
+URL: https://berchj.github.io/toolswitch/calendar/
+Shortcut: Super+Shift+E on Linux, Ctrl+Alt+E on Windows, Cmd+Option+E on Mac.
+
+Your Google Calendar without opening the browser: today’s agenda one shortcut away and a notice before every meeting.
+
+- Your day at a glance: The events of today or any other day.
+- Create and edit events: Add, change or delete events and their guests — or just write “Lunch with Ana tomorrow 1pm”.
+- Heads-up: A notification 10 minutes before each event.
+
+How to use it:
+1. Turn on Calendar in toolswitch and connect your Google account.
+2. Press the shortcut to see your agenda or add an event.
+
+Alternative to: Google Calendar browser tab, GNOME Calendar, Calendar widgets.
+
+Q: Is it off by default?
+A: Yes. It only talks to Google after you turn it on and connect your account.
+
+## Breaks — Break reminder and Pomodoro timer (20-20-20) — free
+
+URL: https://berchj.github.io/toolswitch/break-reminder/
+Shortcut: Super+Shift+P on Linux, Ctrl+Alt+P on Windows, Cmd+Option+P on Mac.
+
+Hours in front of the screen tire your eyes and your back. toolswitch reminds you to look away and stretch, or keeps your Pomodoro sessions.
+
+- 20-20-20: Every 20 minutes, look at something 20 feet (6 m) away for 20 seconds.
+- Pomodoro: 25 minutes of work, 5 of rest — or your own times.
+- Sounds: A soft sound when the break starts and another when it’s time to go back.
+
+How to use it:
+1. Turn on Breaks in toolswitch.
+2. Choose 20-20-20 or Pomodoro.
+3. Keep working; it tells you when to rest.
+
+Alternative to: Workrave, Stretchly, EyeLeo, Pomodoro timer websites.
+
+Q: What is the 20-20-20 rule?
+A: Every 20 minutes, look at something about 20 feet (6 meters) away for 20 seconds. It’s what eye doctors recommend against eye strain from screens.
+
+## Compress files — Compress images, PDF, Word and PowerPoint offline — free
+
+URL: https://berchj.github.io/toolswitch/compress-files/
+Shortcut: Super+Shift+T on Linux, Ctrl+Alt+T on Windows, Cmd+Option+T on Mac.
+
+A file too big to email or upload? Drag it into toolswitch and get a smaller copy next to it, without sending it to any website.
+
+- Images: JPG and PNG, with a smart palette like TinyPNG.
+- Documents: PDF, Word, PowerPoint and Excel: it shrinks the photos inside; text and layout stay the same.
+- Many at once: Drag a whole batch.
+- Offline: The smaller copy is saved next to each file as name-min. Originals are never changed.
+
+How to use it:
+1. Press the shortcut or open Compress files.
+2. Drag your files in.
+3. The smaller copies appear next to the originals.
+
+Alternative to: TinyPNG, iLovePDF, Smallpdf, Adobe online compressor, tinyswitch.
+
+Q: How do I reduce a PDF’s size without uploading it?
+A: Drag it into toolswitch’s Compress files tool. It shrinks the images inside the PDF on your computer.
+Q: Will it ruin the quality?
+A: Photos are recompressed to a size that looks the same on screen. Text, fonts and layout don’t change.
+
+## Remove background — Remove image background offline with AI — free
+
+URL: https://berchj.github.io/toolswitch/remove-background/
+Shortcut: Super+Shift+B on Linux, Ctrl+Alt+B on Windows, Cmd+Option+B on Mac.
+
+Product photos, profile pictures, stickers: drop a photo and get it without the background, without uploading it anywhere.
+
+- Good edges: BiRefNet, a modern AI model: hair, clothes and objects in hand stay solid.
+- Transparent PNG: Saved next to the original, ready for slides, stores or designs.
+- No watermark, no credits: Use it as much as you want.
+- Offline: The model is downloaded once and runs on your computer.
+
+How to use it:
+1. Press the shortcut or open Remove background.
+2. Drag a photo in.
+3. A transparent PNG appears next to it in a few seconds.
+
+Alternative to: remove.bg, Canva background remover, Photoshop remove background, rembg.
+
+Q: Is there a free remove.bg alternative that works offline?
+A: Yes: toolswitch’s Remove background runs an AI model on your computer, with no limits or watermark.
+Q: How long does it take?
+A: About 10 seconds per photo on a normal computer, without a graphics card.
+Q: Does it need internet?
+A: Only the first time, to download the model (about 220 MB).
+
+## Sign PDF — Sign a PDF without printing — free and offline
+
+URL: https://berchj.github.io/toolswitch/sign-pdf/
+Shortcut: Super+Shift+S on Linux, Ctrl+Alt+S on Windows, Cmd+Option+S on Mac.
+
+Contracts, forms, permission slips: sign them on the computer instead of printing, signing and scanning.
+
+- Draw it once: Your signature is saved for next time.
+- Put it where it goes: See the page and drag the signature to its place.
+- Private: The PDF never leaves your computer.
+
+How to use it:
+1. Press the shortcut or open Sign PDF.
+2. Draw your signature (only the first time).
+3. Open the PDF, drag the signature to its place and save.
+
+Alternative to: Adobe Acrobat Fill & Sign, DocuSign for personal documents, Smallpdf sign, printing and scanning.
+
+Q: Is it a legal digital signature?
+A: It places an image of your handwritten signature, like signing on paper. It isn’t a certificate-based digital signature.
+Q: Can I sign a PDF on Linux?
+A: Yes: toolswitch works the same on Linux, Windows and macOS.
+
+## Audio to text — Transcribe audio to text offline with Whisper — free
+
+URL: https://berchj.github.io/toolswitch/audio-to-text/
+Shortcut: Super+Shift+A on Linux, Ctrl+Alt+A on Windows, Cmd+Option+A on Mac.
+
+A long voice message, an interview, a class recording: drop the file and get the text, without uploading it to any service.
+
+- Whisper: The speech recognition model by OpenAI, running on your computer.
+- ~100 languages: Detects the language by itself.
+- Common formats: WhatsApp voice notes (opus), mp3, wav, m4a and videos.
+- Offline and private: The audio never leaves your computer.
+
+How to use it:
+1. Press the shortcut or open Audio to text.
+2. Drag the audio or video file in.
+3. Copy the text when it’s ready.
+
+Alternative to: Otter.ai, online transcription sites, paid transcription services.
+
+Q: Can I transcribe WhatsApp voice notes?
+A: Yes. Save the voice note to your computer and drag it in.
+Q: Does it need a graphics card?
+A: No. It runs on the processor.
+
+## Tidy downloads — Organize your Downloads folder automatically — free
+
+URL: https://berchj.github.io/toolswitch/tidy-downloads/
+Shortcut: Super+Shift+O on Linux, Ctrl+Alt+O on Windows, Cmd+Option+O on Mac.
+
+The Downloads folder fills up fast. toolswitch moves each file to its place as soon as it arrives, with rules you can turn on or off.
+
+- By type: Documents, images, music, videos and installers, each to its folder.
+- Old files: Optionally, send what’s older than a few weeks to the trash.
+- Undo: Every move can be undone.
+
+How to use it:
+1. Turn on Tidy downloads in toolswitch.
+2. Check the rules and turn off any you don’t want.
+3. Download as usual; files go to their place.
+
+Alternative to: Hazel, DropIt, File Juggler, manual cleanup.
+
+Q: Is there a Hazel alternative for Windows and Linux?
+A: Yes: toolswitch’s Tidy downloads moves files by rules on Windows, Linux and macOS.
+Q: Is it on by default?
+A: No. It only moves files after you turn it on.
+
+## Backup — Automatic backup to an external drive — free and simple
+
+URL: https://berchj.github.io/toolswitch/backup/
+Shortcut: Super+Shift+K on Linux, Ctrl+Alt+K on Windows, Cmd+Option+K on Mac.
+
+A broken disk or a lost laptop shouldn’t take your photos and documents with it. Pick the folders and a drive; toolswitch copies them every day.
+
+- By itself: Every hour, every 6 or 12 hours, or once a day. Only new and changed files are copied, so it’s quick.
+- Nothing is lost: Nothing is ever deleted in the backup, so a file you deleted by mistake is still there.
+- Plain copies: Your files are copied as they are: you can open them from the drive without any program.
+- Warns you: If the drive isn’t connected, it tells you.
+
+How to use it:
+1. Turn on Backup in toolswitch.
+2. Choose the folders to copy and where to copy them.
+3. Leave the drive connected; it runs on its own.
+
+Alternative to: FreeFileSync, Déjà Dup, Windows File History, manual copies.
+
+Q: Does it compress or encrypt the backup?
+A: No. It keeps plain copies so you can open them anywhere.
+
+## Clean up — Free disk cleaner: find what takes space and free it
+
+URL: https://berchj.github.io/toolswitch/clean-up/
+Shortcut: Super+Shift+L on Linux, Ctrl+Alt+L on Windows, Cmd+Option+L on Mac.
+
+Disk almost full? toolswitch shows where the space went and frees it, without touching anything you didn’t pick.
+
+- Trash and caches: Space you can recover safely.
+- Old downloads: Files that have been sitting in Downloads for more than 30 days.
+- Big files: Files over 500 MB, so you decide what to keep.
+
+How to use it:
+1. Press the shortcut or open Clean up.
+2. Look at what it found.
+3. Choose what to delete.
+
+Alternative to: CCleaner, BleachBit, Windows Disk Cleanup, CleanMyMac.
+
+Q: Does it delete anything by itself?
+A: No. It shows what it found and removes only what you pick. Files go to the trash, so you can bring them back; emptying the trash and clearing caches ask first.
+
+## Watch the PC — Get warned when the disk is full or an app hogs the CPU
+
+URL: https://berchj.github.io/toolswitch/pc-monitor/
+Shortcut: Super+Shift+M on Linux, Ctrl+Alt+M on Windows, Cmd+Option+M on Mac.
+
+The computer suddenly slow, the fan loud? toolswitch keeps an eye on it and tells you which program is the cause.
+
+- Disk almost full: A warning before you run out of space.
+- Stuck programs: When an app eats the processor or memory for a while, you get a notice with its name.
+- Close it from there: End the program from the notification.
+
+How to use it:
+1. Turn on Watch the PC in toolswitch.
+2. Keep working; it warns you when something is wrong.
+
+Alternative to: Task Manager, System Monitor, Activity Monitor, htop.
+
+Q: Can it close system processes?
+A: No. It only offers to close your own programs, not the system’s or other users’.
+
+## Shut down timer — Shutdown timer: turn off the PC later or when downloads finish
+
+URL: https://berchj.github.io/toolswitch/shutdown-timer/
+Shortcut: Super+Shift+Q on Linux, Ctrl+Alt+Q on Windows, Cmd+Option+Q on Mac.
+
+Leaving a download running at night? Falling asleep with a movie? Tell toolswitch when to turn the computer off.
+
+- In a while: In 30 minutes, an hour, or what you choose.
+- At a time: Shut down or sleep at 23:00.
+- When downloads finish: It waits until the download is complete.
+
+How to use it:
+1. Press the shortcut or open Shut down timer.
+2. Choose shut down, restart or sleep, and when.
+3. You can cancel any time.
+
+Alternative to: shutdown -s -t, Wise Auto Shutdown, sleep timer apps.
+
+Q: How do I shut down the PC after a download?
+A: Choose “when the downloads finish” in the Shut down timer. It works with any browser or download app.
+
+## Security check — Check your computer’s security settings — free
+
+URL: https://berchj.github.io/toolswitch/security-check/
+Shortcut: Super+Shift+G on Linux, Ctrl+Alt+G on Windows, Cmd+Option+G on Mac.
+
+Is the firewall on? Is the disk encrypted? Are there updates waiting? toolswitch checks it in seconds and explains what to do.
+
+- Local checks: Firewall, open ports, pending updates, screen lock, disk encryption, SSH and files with secrets.
+- Changes nothing by itself: Each fix is a setting to change or a command to copy.
+- Clear results: What’s fine, what isn’t, and why it matters.
+- A plan with Claude: With your own Anthropic API key, Claude writes the steps to fix each thing.
+
+How to use it:
+1. Press the shortcut or open Security check.
+2. Run the check.
+3. Follow the steps, or ask Claude for a plan.
+
+Alternative to: Lynis (for everyday users), Windows Security overview, security checklists.
+
+Q: Does it send my data anywhere?
+A: The checks run on your computer, offline. Only if you add an Anthropic key and ask for a plan, the settings it found (no files, no personal data) are sent to Claude.
+
+## Jira — Jira notifications on your desktop for issues assigned to you
+
+URL: https://berchj.github.io/toolswitch/jira/
+Shortcut: Super+Shift+J on Linux, Ctrl+Alt+J on Windows, Cmd+Option+J on Mac.
+
+Don’t keep a Jira tab open all day. toolswitch lists your issues and tells you when something new lands on you.
+
+- Your issues: Everything assigned to you, one shortcut away.
+- New ones: A notification when you’re assigned a new issue.
+- Private token: Your API token is stored only on your computer.
+
+How to use it:
+1. Turn on Jira in toolswitch and add your site and API token.
+2. Press the shortcut to see your issues.
+
+Alternative to: Jira browser tab, email notifications from Jira.
+
+Q: Is it off by default?
+A: Yes. It only connects to Jira after you turn it on and add your token.
+
+## Updates — Update all your apps with one click (apt, Flatpak, Snap, winget)
+
+URL: https://berchj.github.io/toolswitch/updates/
+Shortcut: Super+Shift+U on Linux, Ctrl+Alt+U on Windows, Cmd+Option+U on Mac.
+
+Updates bring security fixes, but nobody likes running three commands. toolswitch checks and updates everything with one button.
+
+- Everything at once: System packages, Flatpak and Snap on Linux; winget on Windows.
+- Tells you: A notice when updates are waiting.
+- One click: No terminal needed.
+
+How to use it:
+1. Turn on Updates in toolswitch.
+2. When it says there are updates, click Update.
+
+Alternative to: sudo apt upgrade, flatpak update, snap refresh, winget upgrade --all, Topgrade.
+
+Q: How do I update all apps at once on Ubuntu?
+A: Install toolswitch and turn on Updates: it updates apt, Flatpak and Snap packages with one click.
+
+# A PowerToys alternative for Mac and Linux
+
+URL: https://berchj.github.io/powertoys-alternative/
+
+Microsoft PowerToys is great, but it only runs on Windows and most of its tools are for power users. toolswitch is in the same spirit — small tools you open with a shortcut — and works the same on Windows, macOS and Linux, focused on everyday tasks.
+
+| | PowerToys | toolswitch |
+|---|---|---|
+| Windows | Yes | Yes |
+| macOS | No | Yes |
+| Linux | No | Yes |
+| Clipboard history | No (Windows has Win+V) | Yes, with images and search |
+| Text from screen (OCR) | Yes (Text Extractor) | Yes, offline |
+| Image resizer / compressor | Resizer | Compressor for images, PDF, Word, PowerPoint and Excel |
+| Remove background | No | Yes, AI on your computer |
+| Sign PDF | No | Yes |
+| Audio to text | No | Yes, Whisper offline |
+| Reminders, breaks, shutdown timer | Awake only | Yes |
+| Backup, clean up, tidy downloads | No | Yes |
+| Developer tools (FancyZones, Keyboard Manager…) | Yes | No |
+| Size | Hundreds of MB | About 15 MB |
+| Price | Free | Free |
+
+Q: Is there PowerToys for Mac?
+A: No, PowerToys is Windows-only. toolswitch offers similar everyday tools on macOS: clipboard history, OCR, file compressor, background remover and more.
+Q: Is there PowerToys for Linux?
+A: No. On Linux you can use toolswitch, which runs on Ubuntu and other distributions with the same shortcuts.
+Q: Can I use toolswitch together with PowerToys?
+A: Yes. On Windows they can run side by side; you can turn off the toolswitch tools you already have in PowerToys.
