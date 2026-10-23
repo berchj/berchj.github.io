@@ -25,25 +25,29 @@ LICENSE_TEXT = 'Free · open source · MIT license' if OPEN_SOURCE else 'Free ·
 TOOLSWITCH = {
     'name': 'toolswitch',
     'kind': 'Everyday tools in one app',
-    'title': 'toolswitch — 14 free everyday tools in one tiny app for Windows, Mac and Linux',
-    'description': 'Free desktop app with 14 everyday tools: clipboard history, text from screen (OCR), wallpaper changer, reminders, breaks, image and PDF compressor, background remover, PDF signing, tidy downloads, backup, clean up, PC monitor, shut down timer and updates. Offline, no account. Windows, macOS and Linux.',
-    'tagline': '14 everyday tools in <strong>one tiny app</strong> that waits in your tray. Turn on the ones you want and use them from anywhere with a shortcut.',
+    'title': 'toolswitch — 18 free everyday tools in one tiny app for Windows, Mac and Linux',
+    'description': 'Free desktop app with 18 everyday tools: clipboard history, text from screen (OCR), wallpaper changer, reminders, Google Calendar, breaks, image and PDF compressor, background remover, PDF signing, audio to text, tidy downloads, backup, clean up, PC monitor, shut down timer, updates, security check and Jira. Offline, no account. Windows, macOS and Linux.',
+    'tagline': '18 everyday tools in <strong>one tiny app</strong> that waits in your tray. Turn on the ones you want and use them from anywhere with a shortcut.',
     'category': 'UtilitiesApplication',
     'keywords': 'powertoys alternative, desktop utilities, clipboard history, screen ocr, wallpaper changer, compress pdf offline, remove background offline, sign pdf, pomodoro timer, shutdown timer, linux utilities, windows utilities, mac utilities',
     'features': [
         ('📋', 'Clipboard history', 'Everything you copy, text and images, one shortcut away. Search it and pin favorites.'),
-        ('🔍', 'Text from screen', 'Select part of the screen and copy the text in it (OCR, letters without accents for now).'),
+        ('🔍', 'Text from screen', 'Select part of the screen and copy the text in it (OCR). Reads accents and ñ, in 30+ languages.'),
         ('🖼️', 'Wallpapers', 'Pick your wallpapers and switch them with a shortcut or every few minutes.'),
         ('⏰', 'Reminders', 'Write “in 20 min call Juan” and get a notification then. No calendar, no account.'),
+        ('📅', 'Calendar', 'Your Google Calendar: today’s events, new ones with guests, and a heads-up 10 minutes before each.'),
         ('☕', 'Breaks', 'Rest your eyes every 20 minutes (20-20-20), or work with a Pomodoro timer.'),
         ('📦', 'Compress files', 'Smaller JPG, PNG, PDF, Word, PowerPoint and Excel files. Your originals stay untouched.'),
         ('✂️', 'Remove background', 'Transparent PNG of any photo, with an AI model that runs on your computer.'),
-        ('✒️', 'Sign PDF', 'Draw your signature once and put it on PDFs without printing them.'),
+        ('✒️', 'Sign PDF', 'Draw your signature once, drag it to its place on the page and sign PDFs without printing them.'),
+        ('🎤', 'Audio to text', 'Voice notes, recordings and videos into text, offline, in ~100 languages (Whisper).'),
         ('📂', 'Tidy downloads', 'Moves what you download to its folder by type, by itself. Every move can be undone.'),
         ('💾', 'Backup', 'Copies the folders you pick to another disk every day. Only what changed.'),
         ('♻️', 'Clean up', 'Shows what takes space — trash, caches, old downloads, big files — and frees it.'),
         ('📈', 'Watch the PC', 'Warns when a disk is almost full or a program gets stuck eating the processor or memory.'),
         ('🔌', 'Shut down timer', 'Shut down, restart or sleep later, at a time, or when the downloads finish.'),
+        ('🛡️', 'Security check', 'Finds what’s risky in how your computer is set up — firewall, open ports, updates, encryption — and how to fix it. Claude can write the plan.'),
+        ('☑️', 'Jira', 'The Jira issues assigned to you, and a heads-up when you get a new one.'),
         ('⟳', 'Updates', 'Updates the system and your apps with one click, and tells you when there’s something new.'),
     ],
     'steps': [
@@ -53,9 +57,9 @@ TOOLSWITCH = {
         'Change any shortcut by clicking it and pressing the keys you like.',
     ],
     'faq': [
-        ('What is toolswitch?', 'A small desktop app with 14 everyday tools — clipboard history, screen OCR, wallpapers, reminders, breaks, file compressor, background remover, PDF signing, tidy downloads, backup, clean up, PC monitor, shut down timer and updates — that waits in your tray.'),
+        ('What is toolswitch?', 'A small desktop app with 18 everyday tools — clipboard history, screen OCR, wallpapers, reminders, Google Calendar, breaks, file compressor, background remover, PDF signing, audio to text, tidy downloads, backup, clean up, PC monitor, shut down timer, updates, security check and Jira — that waits in your tray.'),
         ('Is it like Microsoft PowerToys?', 'It’s in the same spirit, but it works the same on Windows, macOS and Linux, and it focuses on everyday tasks instead of developer tools.'),
-        ('Does it upload my files or what I copy?', 'No. Everything runs on your computer. The AI models for text from screen and background removal are downloaded once and then work offline.'),
+        ('Does it upload my files or what I copy?', 'No. Everything runs on your computer. The AI models for text from screen, background removal and audio to text are downloaded once and then work offline. Only Calendar and Jira talk to Google and Atlassian, and Security check to Anthropic’s Claude if you add a key — and only when you connect them.'),
         ('How heavy is it?', 'The program is about 15 MB and uses about 90 MB of memory and almost no processor while it waits in the tray. A tool that’s off does nothing at all.'),
         ('Can I use only some of the tools?', 'Yes. Each tool has its own switch; the ones you turn off don’t run.'),
         ('Is toolswitch free?', 'Yes, it’s free to download and use. No account, no ads.'),
@@ -134,7 +138,7 @@ def head(title, description, url, image, extra=''):
 
 def nav(current=None):
     current_attr = ' aria-current=page' if current == 'toolswitch' else ''
-    return f'<nav><div class="wrap"><a class="home" href="/"><img src="/img/toolswitch-64.png" alt="">toolswitch</a><a href="/toolswitch/"{current_attr}>The 14 tools</a><a href="{REPO_URL}/releases/latest">Download</a></div></nav>'
+    return f'<nav><div class="wrap"><a class="home" href="/"><img src="/img/toolswitch-64.png" alt="">toolswitch</a><a href="/toolswitch/"{current_attr}>The 18 tools</a><a href="{REPO_URL}/releases/latest">Download</a></div></nav>'
 
 
 def footer():
@@ -216,7 +220,7 @@ def toolswitch_page():
 </div>
 
 <section class="wrap">
-<h2>14 tools, one app</h2>
+<h2>18 tools, one app</h2>
 <div class="grid">{cards(app['features'])}</div>
 </section>
 
@@ -250,14 +254,14 @@ def legacy_page(app):
 <div class="hero wrap">
 <img class="icon" src="/img/toolswitch-icon.png" alt="toolswitch icon" width="96" height="96">
 <h1>{n} is now part of toolswitch</h1>
-<p class="tagline">The {app['kind'].lower()} you know is now the <strong>{app['tool']}</strong> tool inside <a href="/toolswitch/">toolswitch</a>: one tiny app with 14 everyday tools for Windows, macOS and Linux.</p>
+<p class="tagline">The {app['kind'].lower()} you know is now the <strong>{app['tool']}</strong> tool inside <a href="/toolswitch/">toolswitch</a>: one tiny app with 18 everyday tools for Windows, macOS and Linux.</p>
 {download_box()}
 </div>
 
 <section class="wrap">
 <h2>{app['tool']} in toolswitch</h2>
 <div class="grid">{cards(app['features'])}</div>
-<p>Plus 13 more tools — clipboard, text from screen, reminders, breaks, background remover, PDF signing and more. <a href="/toolswitch/">See them all</a>.</p>
+<p>Plus 17 more tools — clipboard, text from screen, reminders, breaks, background remover, PDF signing and more. <a href="/toolswitch/">See them all</a>.</p>
 {NOTE}
 </section>
 </main>
@@ -269,7 +273,7 @@ def legacy_page(app):
 
 
 def home_page():
-    title = 'toolswitch — 14 free everyday tools in one app for Windows, Mac and Linux'
+    title = 'toolswitch — 18 free everyday tools in one app for Windows, Mac and Linux'
     description = TOOLSWITCH['description']
     ld = {
         '@context': 'https://schema.org',
@@ -286,7 +290,7 @@ def home_page():
 <h1>toolswitch</h1>
 <p class="tagline">{TOOLSWITCH['tagline']}</p>
 {download_box()}
-<p><a href="/toolswitch/">See the 14 tools →</a></p>
+<p><a href="/toolswitch/">See the 18 tools →</a></p>
 </div>
 <section class="wrap">
 <div class="grid">{cards(TOOLSWITCH['features'])}</div>

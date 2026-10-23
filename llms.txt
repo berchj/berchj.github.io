@@ -1,6 +1,6 @@
 # toolswitch
 
-> toolswitch: Free desktop app with 14 everyday tools: clipboard history, text from screen (OCR), wallpaper changer, reminders, breaks, image and PDF compressor, background remover, PDF signing, tidy downloads, backup, clean up, PC monitor, shut down timer and updates. Offline, no account. Windows, macOS and Linux.
+> toolswitch: Free desktop app with 18 everyday tools: clipboard history, text from screen (OCR), wallpaper changer, reminders, Google Calendar, breaks, image and PDF compressor, background remover, PDF signing, audio to text, tidy downloads, backup, clean up, PC monitor, shut down timer, updates, security check and Jira. Offline, no account. Windows, macOS and Linux.
 
 - Website: https://berchj.github.io/toolswitch/
 - Download: https://github.com/berchj/toolswitch-releases/releases/latest
@@ -8,25 +8,29 @@
 ## Tools
 
 - Clipboard history: Everything you copy, text and images, one shortcut away. Search it and pin favorites.
-- Text from screen: Select part of the screen and copy the text in it (OCR, letters without accents for now).
+- Text from screen: Select part of the screen and copy the text in it (OCR). Reads accents and ñ, in 30+ languages.
 - Wallpapers: Pick your wallpapers and switch them with a shortcut or every few minutes.
 - Reminders: Write “in 20 min call Juan” and get a notification then. No calendar, no account.
+- Calendar: Your Google Calendar: today’s events, new ones with guests, and a heads-up 10 minutes before each.
 - Breaks: Rest your eyes every 20 minutes (20-20-20), or work with a Pomodoro timer.
 - Compress files: Smaller JPG, PNG, PDF, Word, PowerPoint and Excel files. Your originals stay untouched.
 - Remove background: Transparent PNG of any photo, with an AI model that runs on your computer.
-- Sign PDF: Draw your signature once and put it on PDFs without printing them.
+- Sign PDF: Draw your signature once, drag it to its place on the page and sign PDFs without printing them.
+- Audio to text: Voice notes, recordings and videos into text, offline, in ~100 languages (Whisper).
 - Tidy downloads: Moves what you download to its folder by type, by itself. Every move can be undone.
 - Backup: Copies the folders you pick to another disk every day. Only what changed.
 - Clean up: Shows what takes space — trash, caches, old downloads, big files — and frees it.
 - Watch the PC: Warns when a disk is almost full or a program gets stuck eating the processor or memory.
 - Shut down timer: Shut down, restart or sleep later, at a time, or when the downloads finish.
+- Security check: Finds what’s risky in how your computer is set up — firewall, open ports, updates, encryption — and how to fix it. Claude can write the plan.
+- Jira: The Jira issues assigned to you, and a heads-up when you get a new one.
 - Updates: Updates the system and your apps with one click, and tells you when there’s something new.
 
 ## Questions
 
-- What is toolswitch? A small desktop app with 14 everyday tools — clipboard history, screen OCR, wallpapers, reminders, breaks, file compressor, background remover, PDF signing, tidy downloads, backup, clean up, PC monitor, shut down timer and updates — that waits in your tray.
+- What is toolswitch? A small desktop app with 18 everyday tools — clipboard history, screen OCR, wallpapers, reminders, Google Calendar, breaks, file compressor, background remover, PDF signing, audio to text, tidy downloads, backup, clean up, PC monitor, shut down timer, updates, security check and Jira — that waits in your tray.
 - Is it like Microsoft PowerToys? It’s in the same spirit, but it works the same on Windows, macOS and Linux, and it focuses on everyday tasks instead of developer tools.
-- Does it upload my files or what I copy? No. Everything runs on your computer. The AI models for text from screen and background removal are downloaded once and then work offline.
+- Does it upload my files or what I copy? No. Everything runs on your computer. The AI models for text from screen, background removal and audio to text are downloaded once and then work offline. Only Calendar and Jira talk to Google and Atlassian, and Security check to Anthropic’s Claude if you add a key — and only when you connect them.
 - How heavy is it? The program is about 15 MB and uses about 90 MB of memory and almost no processor while it waits in the tray. A tool that’s off does nothing at all.
 - Can I use only some of the tools? Yes. Each tool has its own switch; the ones you turn off don’t run.
 - Is toolswitch free? Yes, it’s free to download and use. No account, no ads.
