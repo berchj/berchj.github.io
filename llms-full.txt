@@ -1,41 +1,34 @@
 # toolswitch
 
-> toolswitch: Free desktop app with 18 everyday tools: clipboard history, text from screen (OCR), wallpaper changer, reminders, Google Calendar, breaks, image and PDF compressor, background remover, PDF signing, audio to text, tidy downloads, backup, clean up, PC monitor, shut down timer, updates, security check and Jira. Offline, no account. Windows, macOS and Linux.
+> toolswitch: Free desktop app with 10 everyday tools: clipboard history, text from screen (OCR), AI background remover, audio and WhatsApp voice notes to text, image and PDF compressor, PDF signing, wallpapers, reminders, breaks and shut down timer. The AI runs on your computer: nothing is uploaded, no account. Windows, macOS and Linux.
 
 - Website: https://berchj.github.io/toolswitch/
 - Download: https://github.com/berchj/toolswitch-releases/releases/latest
 - Compared with Microsoft PowerToys: https://berchj.github.io/powertoys-alternative/
 - Full text of the site: https://berchj.github.io/llms-full.txt
+- En español: https://berchj.github.io/es/
 
 ## Tools
 
 - [Clipboard history](https://berchj.github.io/toolswitch/clipboard-history/): Everything you copy, text and images, one shortcut away. Search it and pin favorites.
-- [Text from screen](https://berchj.github.io/toolswitch/text-from-screen/): Select part of the screen and copy the text in it (OCR). Reads accents and ñ, in 30+ languages.
+- [Text from screen](https://berchj.github.io/toolswitch/text-from-screen/): Select part of the screen and copy the text in it (OCR). Accents, ñ and tables included.
 - [Wallpapers](https://berchj.github.io/toolswitch/wallpaper-changer/): Pick your wallpapers and switch them with a shortcut or every few minutes.
 - [Reminders](https://berchj.github.io/toolswitch/reminders/): Write “in 20 min call Juan” and get a notification then. No calendar, no account.
-- [Calendar](https://berchj.github.io/toolswitch/calendar/): Your Google Calendar: today’s events, new ones with guests, and a heads-up 10 minutes before each.
 - [Breaks](https://berchj.github.io/toolswitch/break-reminder/): Rest your eyes every 20 minutes (20-20-20), or work with a Pomodoro timer.
 - [Compress files](https://berchj.github.io/toolswitch/compress-files/): Smaller JPG, PNG, PDF, Word, PowerPoint and Excel files. Your originals stay untouched.
 - [Remove background](https://berchj.github.io/toolswitch/remove-background/): Transparent PNG of any photo, with an AI model that runs on your computer.
-- [Sign PDF](https://berchj.github.io/toolswitch/sign-pdf/): Draw your signature once, drag it to its place on the page and sign PDFs without printing them.
-- [Audio to text](https://berchj.github.io/toolswitch/audio-to-text/): Voice notes, recordings and videos into text, offline, in ~100 languages (Whisper).
-- [Tidy downloads](https://berchj.github.io/toolswitch/tidy-downloads/): Moves what you download to its folder by type, by itself. Every move can be undone.
-- [Backup](https://berchj.github.io/toolswitch/backup/): Copies the folders you pick to another disk every day. Only what changed.
-- [Clean up](https://berchj.github.io/toolswitch/clean-up/): Shows what takes space — trash, caches, old downloads, big files — and frees it.
-- [Watch the PC](https://berchj.github.io/toolswitch/pc-monitor/): Warns when a disk is almost full or a program gets stuck eating the processor or memory.
+- [Sign PDF](https://berchj.github.io/toolswitch/sign-pdf/): Draw your signature once, drag it to its place on the page and sign PDFs without printing.
+- [Audio to text](https://berchj.github.io/toolswitch/audio-to-text/): Voice notes, WhatsApp audios, recordings and videos into text, offline, in ~100 languages.
 - [Shut down timer](https://berchj.github.io/toolswitch/shutdown-timer/): Shut down, restart or sleep later, at a time, or when the downloads finish.
-- [Security check](https://berchj.github.io/toolswitch/security-check/): Finds what’s risky in how your computer is set up — firewall, open ports, updates, encryption — and how to fix it. Claude can write the plan.
-- [Jira](https://berchj.github.io/toolswitch/jira/): The Jira issues assigned to you, and a heads-up when you get a new one.
-- [Updates](https://berchj.github.io/toolswitch/updates/): Updates the system and your apps with one click, and tells you when there’s something new.
 
 ## Questions
 
-- What is toolswitch? A small desktop app with 18 everyday tools — clipboard history, screen OCR, wallpapers, reminders, Google Calendar, breaks, file compressor, background remover, PDF signing, audio to text, tidy downloads, backup, clean up, PC monitor, shut down timer, updates, security check and Jira — that waits in your tray.
+- What is toolswitch? A small desktop app with 10 everyday tools — clipboard history, text from screen (OCR), wallpapers, reminders, breaks, file compressor, AI background remover, PDF signing, audio to text and a shut down timer — that waits in your tray.
+- Do the AI tools upload my files? No. Background removal (BiRefNet), audio to text (OpenAI Whisper) and text from screen (PaddleOCR) run on your computer. Their models are downloaded once and then work offline. Your photos, recordings and screenshots never leave your computer.
 - Is it like Microsoft PowerToys? It’s in the same spirit, but it works the same on Windows, macOS and Linux, and it focuses on everyday tasks instead of developer tools.
-- Does it upload my files or what I copy? No. Everything runs on your computer. The AI models for text from screen, background removal and audio to text are downloaded once and then work offline. Only Calendar and Jira talk to Google and Atlassian, and Security check to Anthropic’s Claude if you add a key — and only when you connect them.
+- Can it transcribe WhatsApp voice notes and videos? Yes. Save them to your computer and drag them into Audio to text; it reads Spanish, English and about 100 other languages.
 - How heavy is it? The program is about 15 MB and uses about 90 MB of memory and almost no processor while it waits in the tray. A tool that’s off does nothing at all.
-- Can I use only some of the tools? Yes. Each tool has its own switch; the ones you turn off don’t run.
-- Is toolswitch free? Yes, it’s free to download and use. No account, no ads.
+- Is toolswitch free? Yes, it’s free to download and use. No account, no ads. If it helps you, you can support it with a coffee.
 
 ## Earlier apps
 
@@ -144,26 +137,6 @@ A: No. Reminders stay on your computer.
 Q: What if the computer was off at that time?
 A: The reminder shows up as soon as toolswitch starts again.
 
-## Calendar — Google Calendar on your desktop with meeting reminders
-
-URL: https://berchj.github.io/toolswitch/calendar/
-Shortcut: Super+Shift+E on Linux, Ctrl+Alt+E on Windows, Cmd+Option+E on Mac.
-
-Your Google Calendar without opening the browser: today’s agenda one shortcut away and a notice before every meeting.
-
-- Your day at a glance: The events of today or any other day.
-- Create and edit events: Add, change or delete events and their guests — or just write “Lunch with Ana tomorrow 1pm”.
-- Heads-up: A notification 10 minutes before each event.
-
-How to use it:
-1. Turn on Calendar in toolswitch and connect your Google account.
-2. Press the shortcut to see your agenda or add an event.
-
-Alternative to: Google Calendar browser tab, GNOME Calendar, Calendar widgets.
-
-Q: Is it off by default?
-A: Yes. It only talks to Google after you turn it on and connect your account.
-
 ## Breaks — Break reminder and Pomodoro timer (20-20-20) — free
 
 URL: https://berchj.github.io/toolswitch/break-reminder/
@@ -231,7 +204,7 @@ Alternative to: remove.bg, Canva background remover, Photoshop remove background
 Q: Is there a free remove.bg alternative that works offline?
 A: Yes: toolswitch’s Remove background runs an AI model on your computer, with no limits or watermark.
 Q: How long does it take?
-A: About 10 seconds per photo on a normal computer, without a graphics card.
+A: About 10–15 seconds per photo on a normal computer, without a graphics card.
 Q: Does it need internet?
 A: Only the first time, to download the model (about 220 MB).
 
@@ -267,7 +240,7 @@ A long voice message, an interview, a class recording: drop the file and get the
 
 - Whisper: The speech recognition model by OpenAI, running on your computer.
 - ~100 languages: Detects the language by itself.
-- Common formats: WhatsApp voice notes (opus), mp3, wav, m4a and videos.
+- Common formats: WhatsApp voice notes and videos, mp3, wav, m4a, ogg, flac, mp4, mkv and webm.
 - Offline and private: The audio never leaves your computer.
 
 How to use it:
@@ -278,95 +251,11 @@ How to use it:
 Alternative to: Otter.ai, online transcription sites, paid transcription services.
 
 Q: Can I transcribe WhatsApp voice notes?
-A: Yes. Save the voice note to your computer and drag it in.
+A: Yes, voice notes and videos. Save them to your computer (or use WhatsApp Web) and drag them in.
+Q: How fast is it?
+A: A 35-second video takes about 7 seconds on a normal laptop with the best-quality model.
 Q: Does it need a graphics card?
 A: No. It runs on the processor.
-
-## Tidy downloads — Organize your Downloads folder automatically — free
-
-URL: https://berchj.github.io/toolswitch/tidy-downloads/
-Shortcut: Super+Shift+O on Linux, Ctrl+Alt+O on Windows, Cmd+Option+O on Mac.
-
-The Downloads folder fills up fast. toolswitch moves each file to its place as soon as it arrives, with rules you can turn on or off.
-
-- By type: Documents, images, music, videos and installers, each to its folder.
-- Old files: Optionally, send what’s older than a few weeks to the trash.
-- Undo: Every move can be undone.
-
-How to use it:
-1. Turn on Tidy downloads in toolswitch.
-2. Check the rules and turn off any you don’t want.
-3. Download as usual; files go to their place.
-
-Alternative to: Hazel, DropIt, File Juggler, manual cleanup.
-
-Q: Is there a Hazel alternative for Windows and Linux?
-A: Yes: toolswitch’s Tidy downloads moves files by rules on Windows, Linux and macOS.
-Q: Is it on by default?
-A: No. It only moves files after you turn it on.
-
-## Backup — Automatic backup to an external drive — free and simple
-
-URL: https://berchj.github.io/toolswitch/backup/
-Shortcut: Super+Shift+K on Linux, Ctrl+Alt+K on Windows, Cmd+Option+K on Mac.
-
-A broken disk or a lost laptop shouldn’t take your photos and documents with it. Pick the folders and a drive; toolswitch copies them every day.
-
-- By itself: Every hour, every 6 or 12 hours, or once a day. Only new and changed files are copied, so it’s quick.
-- Nothing is lost: Nothing is ever deleted in the backup, so a file you deleted by mistake is still there.
-- Plain copies: Your files are copied as they are: you can open them from the drive without any program.
-- Warns you: If the drive isn’t connected, it tells you.
-
-How to use it:
-1. Turn on Backup in toolswitch.
-2. Choose the folders to copy and where to copy them.
-3. Leave the drive connected; it runs on its own.
-
-Alternative to: FreeFileSync, Déjà Dup, Windows File History, manual copies.
-
-Q: Does it compress or encrypt the backup?
-A: No. It keeps plain copies so you can open them anywhere.
-
-## Clean up — Free disk cleaner: find what takes space and free it
-
-URL: https://berchj.github.io/toolswitch/clean-up/
-Shortcut: Super+Shift+L on Linux, Ctrl+Alt+L on Windows, Cmd+Option+L on Mac.
-
-Disk almost full? toolswitch shows where the space went and frees it, without touching anything you didn’t pick.
-
-- Trash and caches: Space you can recover safely.
-- Old downloads: Files that have been sitting in Downloads for more than 30 days.
-- Big files: Files over 500 MB, so you decide what to keep.
-
-How to use it:
-1. Press the shortcut or open Clean up.
-2. Look at what it found.
-3. Choose what to delete.
-
-Alternative to: CCleaner, BleachBit, Windows Disk Cleanup, CleanMyMac.
-
-Q: Does it delete anything by itself?
-A: No. It shows what it found and removes only what you pick. Files go to the trash, so you can bring them back; emptying the trash and clearing caches ask first.
-
-## Watch the PC — Get warned when the disk is full or an app hogs the CPU
-
-URL: https://berchj.github.io/toolswitch/pc-monitor/
-Shortcut: Super+Shift+M on Linux, Ctrl+Alt+M on Windows, Cmd+Option+M on Mac.
-
-The computer suddenly slow, the fan loud? toolswitch keeps an eye on it and tells you which program is the cause.
-
-- Disk almost full: A warning before you run out of space.
-- Stuck programs: When an app eats the processor or memory for a while, you get a notice with its name.
-- Close it from there: End the program from the notification.
-
-How to use it:
-1. Turn on Watch the PC in toolswitch.
-2. Keep working; it warns you when something is wrong.
-
-Alternative to: Task Manager, System Monitor, Activity Monitor, htop.
-
-Q: Can it close system processes?
-A: No. It only offers to close your own programs, not the system’s or other users’.
 
 ## Shut down timer — Shutdown timer: turn off the PC later or when downloads finish
 
@@ -389,68 +278,6 @@ Alternative to: shutdown -s -t, Wise Auto Shutdown, sleep timer apps.
 Q: How do I shut down the PC after a download?
 A: Choose “when the downloads finish” in the Shut down timer. It works with any browser or download app.
 
-## Security check — Check your computer’s security settings — free
-
-URL: https://berchj.github.io/toolswitch/security-check/
-Shortcut: Super+Shift+G on Linux, Ctrl+Alt+G on Windows, Cmd+Option+G on Mac.
-
-Is the firewall on? Is the disk encrypted? Are there updates waiting? toolswitch checks it in seconds and explains what to do.
-
-- Local checks: Firewall, open ports, pending updates, screen lock, disk encryption, SSH and files with secrets.
-- Changes nothing by itself: Each fix is a setting to change or a command to copy.
-- Clear results: What’s fine, what isn’t, and why it matters.
-- A plan with Claude: With your own Anthropic API key, Claude writes the steps to fix each thing.
-
-How to use it:
-1. Press the shortcut or open Security check.
-2. Run the check.
-3. Follow the steps, or ask Claude for a plan.
-
-Alternative to: Lynis (for everyday users), Windows Security overview, security checklists.
-
-Q: Does it send my data anywhere?
-A: The checks run on your computer, offline. Only if you add an Anthropic key and ask for a plan, the settings it found (no files, no personal data) are sent to Claude.
-
-## Jira — Jira notifications on your desktop for issues assigned to you
-
-URL: https://berchj.github.io/toolswitch/jira/
-Shortcut: Super+Shift+J on Linux, Ctrl+Alt+J on Windows, Cmd+Option+J on Mac.
-
-Don’t keep a Jira tab open all day. toolswitch lists your issues and tells you when something new lands on you.
-
-- Your issues: Everything assigned to you, one shortcut away.
-- New ones: A notification when you’re assigned a new issue.
-- Private token: Your API token is stored only on your computer.
-
-How to use it:
-1. Turn on Jira in toolswitch and add your site and API token.
-2. Press the shortcut to see your issues.
-
-Alternative to: Jira browser tab, email notifications from Jira.
-
-Q: Is it off by default?
-A: Yes. It only connects to Jira after you turn it on and add your token.
-
-## Updates — Update all your apps with one click (apt, Flatpak, Snap, winget)
-
-URL: https://berchj.github.io/toolswitch/updates/
-Shortcut: Super+Shift+U on Linux, Ctrl+Alt+U on Windows, Cmd+Option+U on Mac.
-
-Updates bring security fixes, but nobody likes running three commands. toolswitch checks and updates everything with one button.
-
-- Everything at once: System packages, Flatpak and Snap on Linux; winget on Windows.
-- Tells you: A notice when updates are waiting.
-- One click: No terminal needed.
-
-How to use it:
-1. Turn on Updates in toolswitch.
-2. When it says there are updates, click Update.
-
-Alternative to: sudo apt upgrade, flatpak update, snap refresh, winget upgrade --all, Topgrade.
-
-Q: How do I update all apps at once on Ubuntu?
-A: Install toolswitch and turn on Updates: it updates apt, Flatpak and Snap packages with one click.
-
 # A PowerToys alternative for Mac and Linux
 
 URL: https://berchj.github.io/powertoys-alternative/
@@ -469,7 +296,7 @@ Microsoft PowerToys is great, but it only runs on Windows and most of its tools 
 | Sign PDF | No | Yes |
 | Audio to text | No | Yes, Whisper offline |
 | Reminders, breaks, shutdown timer | Awake only | Yes |
-| Backup, clean up, tidy downloads | No | Yes |
+| Works offline, no account | Yes | Yes — even the AI tools |
 | Developer tools (FancyZones, Keyboard Manager…) | Yes | No |
 | Size | Hundreds of MB | About 15 MB |
 | Price | Free | Free |

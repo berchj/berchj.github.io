@@ -8,13 +8,16 @@
 	}
 
 	const repo = box.dataset.repo;
+	// The Spanish page says it in Spanish.
+	const es = document.documentElement.lang === 'es';
+	const FOR = es ? 'Descargar para ' : 'Download for ';
 	const FILES = {
-		windows: {label: 'Download for Windows', match: /(win-x64\.exe|windows-x86_64-setup\.exe)$/},
-		macArm: {label: 'Download for Mac (Apple Silicon)', match: /(mac-arm64|macos-arm64)\.dmg$/},
-		macIntel: {label: 'Download for Mac (Intel)', match: /(mac-x64|macos-x86_64)\.dmg$/},
-		deb: {label: 'Download for Ubuntu / Debian (.deb)', match: /\.deb$/},
-		appimage: {label: 'Download for Linux (AppImage)', match: /\.AppImage$/},
-		tarball: {label: 'Download for Linux (.tar.gz)', match: /linux-x86_64\.tar\.gz$/},
+		windows: {label: FOR + 'Windows', match: /(win-x64\.exe|windows-x86_64-setup\.exe)$/},
+		macArm: {label: FOR + 'Mac (Apple Silicon)', match: /(mac-arm64|macos-arm64)\.dmg$/},
+		macIntel: {label: FOR + 'Mac (Intel)', match: /(mac-x64|macos-x86_64)\.dmg$/},
+		deb: {label: FOR + 'Ubuntu / Debian (.deb)', match: /\.deb$/},
+		appimage: {label: FOR + 'Linux (AppImage)', match: /\.AppImage$/},
+		tarball: {label: FOR + 'Linux (.tar.gz)', match: /linux-x86_64\.tar\.gz$/},
 	};
 
 	const ua = navigator.userAgent;
@@ -52,12 +55,12 @@
 			.map(([key, {label}]) => {
 				const a = document.createElement('a');
 				a.href = urls[key];
-				a.textContent = label.replace('Download for ', '');
+				a.textContent = label.replace(FOR, '');
 				return a;
 			}));
 		const version = box.querySelector('.version');
 		if (version) {
-			version.textContent = `Version ${release.tag_name.replace(/^v/, '')} · ${version.textContent}`;
+			version.textContent = `${es ? 'Versión' : 'Version'} ${release.tag_name.replace(/^v/, '')} · ${version.textContent}`;
 		}
 	} catch {} // offline or rate-limited: the plain links stay
 })();

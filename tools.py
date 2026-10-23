@@ -5,7 +5,7 @@ Linux, Ctrl+Alt+key on Windows, Cmd+Option+key on Mac), title and description (f
 intro, points, steps, replaces (apps and sites people look alternatives for), faq, keywords.
 """
 
-TOOLS = [
+ALL_TOOLS = [
     {
         'slug': 'clipboard-history',
         'name': 'Clipboard history',
@@ -206,7 +206,7 @@ TOOLS = [
         'replaces': ['remove.bg', 'Canva background remover', 'Photoshop remove background', 'rembg'],
         'faq': [
             ('Is there a free remove.bg alternative that works offline?', 'Yes: toolswitch’s Remove background runs an AI model on your computer, with no limits or watermark.'),
-            ('How long does it take?', 'About 10 seconds per photo on a normal computer, without a graphics card.'),
+            ('How long does it take?', 'About 10–15 seconds per photo on a normal computer, without a graphics card.'),
             ('Does it need internet?', 'Only the first time, to download the model (about 220 MB).'),
         ],
         'keywords': 'remove background offline, background remover free, transparent png maker, remove.bg alternative, remove background linux, remove background without upload, ai background remover desktop',
@@ -247,7 +247,7 @@ TOOLS = [
         'points': [
             ('Whisper', 'The speech recognition model by OpenAI, running on your computer.'),
             ('~100 languages', 'Detects the language by itself.'),
-            ('Common formats', 'WhatsApp voice notes (opus), mp3, wav, m4a and videos.'),
+            ('Common formats', 'WhatsApp voice notes and videos, mp3, wav, m4a, ogg, flac, mp4, mkv and webm.'),
             ('Offline and private', 'The audio never leaves your computer.'),
         ],
         'steps': [
@@ -257,7 +257,8 @@ TOOLS = [
         ],
         'replaces': ['Otter.ai', 'online transcription sites', 'paid transcription services'],
         'faq': [
-            ('Can I transcribe WhatsApp voice notes?', 'Yes. Save the voice note to your computer and drag it in.'),
+            ('Can I transcribe WhatsApp voice notes?', 'Yes, voice notes and videos. Save them to your computer (or use WhatsApp Web) and drag them in.'),
+            ('How fast is it?', 'A 35-second video takes about 7 seconds on a normal laptop with the best-quality model.'),
             ('Does it need a graphics card?', 'No. It runs on the processor.'),
         ],
         'keywords': 'audio to text offline, transcribe audio free, whisper desktop app, speech to text offline, transcribe voice notes, transcribe whatsapp audio, otter alternative offline',
@@ -457,10 +458,31 @@ TOOLS = [
 ]
 
 # The apps people compare toolswitch with.
+# Taken out of the app for now (2026-10-23): their pages redirect to /toolswitch/.
+HIDDEN = {'calendar', 'tidy-downloads', 'backup', 'clean-up', 'pc-monitor', 'security-check', 'jira', 'updates'}
+TOOLS = [t for t in ALL_TOOLS if t['slug'] not in HIDDEN]
+
+# One line per tool, for the cards. The AI ones first in people's minds, so they say it.
+SUMMARY = {
+    'clipboard-history': 'Everything you copy, text and images, one shortcut away. Search it and pin favorites.',
+    'text-from-screen': 'Select part of the screen and copy the text in it (OCR). Accents, ñ and tables included.',
+    'wallpaper-changer': 'Pick your wallpapers and switch them with a shortcut or every few minutes.',
+    'reminders': 'Write “in 20 min call Juan” and get a notification then. No calendar, no account.',
+    'break-reminder': 'Rest your eyes every 20 minutes (20-20-20), or work with a Pomodoro timer.',
+    'compress-files': 'Smaller JPG, PNG, PDF, Word, PowerPoint and Excel files. Your originals stay untouched.',
+    'remove-background': 'Transparent PNG of any photo, with an AI model that runs on your computer.',
+    'sign-pdf': 'Draw your signature once, drag it to its place on the page and sign PDFs without printing.',
+    'audio-to-text': 'Voice notes, WhatsApp audios, recordings and videos into text, offline, in ~100 languages.',
+    'shutdown-timer': 'Shut down, restart or sleep later, at a time, or when the downloads finish.',
+}
+for t in TOOLS:
+    t['summary'] = SUMMARY[t['slug']]
+HIDDEN_TOOLS = [t for t in ALL_TOOLS if t['slug'] in HIDDEN]
+
 POWERTOYS = {
     'slug': 'powertoys-alternative',
     'title': 'PowerToys alternative for Mac and Linux (and Windows) — toolswitch',
-    'description': 'Microsoft PowerToys only runs on Windows. toolswitch is a free, tiny app with 18 everyday tools — clipboard history, OCR, background remover, PDF tools and more — for Windows, macOS and Linux.',
+    'description': 'Microsoft PowerToys only runs on Windows. toolswitch is a free, tiny app with 10 everyday tools — clipboard history, OCR, AI background remover, audio to text, PDF tools and more — for Windows, macOS and Linux. Offline, no account.',
     'h1': 'A PowerToys alternative for Mac and Linux',
     'intro': 'Microsoft PowerToys is great, but it only runs on Windows and most of its tools are for power users. toolswitch is in the same spirit — small tools you open with a shortcut — and works the same on Windows, macOS and Linux, focused on everyday tasks.',
     'rows': [
@@ -474,7 +496,7 @@ POWERTOYS = {
         ('Sign PDF', 'No', 'Yes'),
         ('Audio to text', 'No', 'Yes, Whisper offline'),
         ('Reminders, breaks, shutdown timer', 'Awake only', 'Yes'),
-        ('Backup, clean up, tidy downloads', 'No', 'Yes'),
+        ('Works offline, no account', 'Yes', 'Yes — even the AI tools'),
         ('Developer tools (FancyZones, Keyboard Manager…)', 'Yes', 'No'),
         ('Size', 'Hundreds of MB', 'About 15 MB'),
         ('Price', 'Free', 'Free'),

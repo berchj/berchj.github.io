@@ -75,6 +75,12 @@ nav .home { color: var(--text); margin-right: auto; }
 
 nav img { width: 24px; height: 24px; }
 
+/* Phones: the menu fits without scrolling sideways. */
+@media (max-width: 560px) {
+	nav .wrap { gap: 14px; font-size: 14px; }
+	nav .wide { display: none; }
+}
+
 /* ---------- hero ---------- */
 
 .hero {
