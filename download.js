@@ -9,15 +9,16 @@
 
 	const repo = box.dataset.repo;
 	const FILES = {
-		windows: {label: 'Download for Windows', match: /win-x64\.exe$/},
-		macArm: {label: 'Download for Mac (Apple Silicon)', match: /mac-arm64\.dmg$/},
-		macIntel: {label: 'Download for Mac (Intel)', match: /mac-x64\.dmg$/},
-		appimage: {label: 'Download for Linux (AppImage)', match: /\.AppImage$/},
+		windows: {label: 'Download for Windows', match: /(win-x64\.exe|windows-x86_64-setup\.exe)$/},
+		macArm: {label: 'Download for Mac (Apple Silicon)', match: /(mac-arm64|macos-arm64)\.dmg$/},
+		macIntel: {label: 'Download for Mac (Intel)', match: /(mac-x64|macos-x86_64)\.dmg$/},
 		deb: {label: 'Download for Ubuntu / Debian (.deb)', match: /\.deb$/},
+		appimage: {label: 'Download for Linux (AppImage)', match: /\.AppImage$/},
+		tarball: {label: 'Download for Linux (.tar.gz)', match: /linux-x86_64\.tar\.gz$/},
 	};
 
 	const ua = navigator.userAgent;
-	const system = /Windows/.test(ua) ? 'windows'
+	let system = /Windows/.test(ua) ? 'windows'
 		: /Macintosh|Mac OS X/.test(ua) ? 'macArm'
 			: /Ubuntu|Debian/i.test(ua) ? 'deb'
 				: /Linux/.test(ua) ? 'appimage'
@@ -33,6 +34,11 @@
 		const urls = {};
 		for (const [key, {match}] of Object.entries(FILES)) {
 			urls[key] = release.assets.find(a => match.test(a.name))?.browser_download_url;
+		}
+
+		// No AppImage: other Linux systems get the plain archive.
+		if (system === 'appimage' && !urls.appimage) {
+			system = 'tarball';
 		}
 
 		const main = box.querySelector('.btn');
