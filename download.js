@@ -20,8 +20,8 @@
 	const ua = navigator.userAgent;
 	let system = /Windows/.test(ua) ? 'windows'
 		: /Macintosh|Mac OS X/.test(ua) ? 'macArm'
-			: /Ubuntu|Debian/i.test(ua) ? 'deb'
-				: /Linux/.test(ua) ? 'appimage'
+			// Browsers rarely say which Linux; most people use Ubuntu, Mint or Debian.
+			: /Linux/.test(ua) ? 'deb'
 					: 'windows';
 
 	try {
@@ -36,9 +36,9 @@
 			urls[key] = release.assets.find(a => match.test(a.name))?.browser_download_url;
 		}
 
-		// No AppImage: other Linux systems get the plain archive.
-		if (system === 'appimage' && !urls.appimage) {
-			system = 'tarball';
+		// No .deb in the release: the AppImage, or else the plain archive.
+		if (system === 'deb' && !urls.deb) {
+			system = urls.appimage ? 'appimage' : 'tarball';
 		}
 
 		const main = box.querySelector('.btn');
@@ -57,7 +57,7 @@
 			}));
 		const version = box.querySelector('.version');
 		if (version) {
-			version.textContent = `Version ${release.tag_name.replace(/^v/, '')} · free · MIT license`;
+			version.textContent = `Version ${release.tag_name.replace(/^v/, '')} · ${version.textContent}`;
 		}
 	} catch {} // offline or rate-limited: the plain links stay
 })();
