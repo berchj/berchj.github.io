@@ -25,7 +25,10 @@ INDEXNOW_KEY = '7c1f4a2e9b8d4e60a3f5c2b1d0e9f8a7'
 REPO = 'berchj/toolswitch-releases'
 REPO_URL = f'https://github.com/{REPO}'
 # Says "open source" and links the code only when the repository is public.
-OPEN_SOURCE = False
+OPEN_SOURCE = True
+# The code (public since 2026-10-23); the installers stay in the releases repository.
+CODE = 'berchj/toolswitch'
+CODE_URL = f'https://github.com/{CODE}'
 LICENSE_TEXT = 'Free · open source · MIT license' if OPEN_SOURCE else 'Free · no account · no ads'
 
 TOOLSWITCH = {
@@ -49,7 +52,7 @@ TOOLSWITCH = {
         ('Is it like Microsoft PowerToys?', 'It’s in the same spirit, but it works the same on Windows, macOS and Linux, and it focuses on everyday tasks instead of developer tools.'),
         ('Can it transcribe WhatsApp voice notes and videos?', 'Yes. Save them to your computer and drag them into Audio to text; it reads Spanish, English and about 100 other languages.'),
         ('How heavy is it?', 'The program is about 15 MB and uses about 90 MB of memory and almost no processor while it waits in the tray. A tool that’s off does nothing at all.'),
-        ('Is toolswitch free?', 'Yes, it’s free to download and use. No account, no ads. If it helps you, you can support it with a coffee.'),
+        ('Is toolswitch free and open source?', 'Yes. It’s free, with no account and no ads, and its code is open source under the MIT license on GitHub. If it helps you, you can support it with a coffee.'),
     ],
 }
 
@@ -138,7 +141,7 @@ def nav(current=None):
 
 def footer():
     made = f'made by <a href="https://github.com/berchj">berchj</a>'
-    code = f' · <a href="{REPO_URL}">source code</a> · MIT license' if OPEN_SOURCE else ''
+    code = f' · <a href="{CODE_URL}">source code</a> · MIT license' if OPEN_SOURCE else ''
     tools = ' · '.join(f'<a href="/toolswitch/{t["slug"]}/">{t["name"]}</a>' for t in TOOLS)
     return f'''<footer><div class="wrap">
 <p class="tools">{tools}</p>
@@ -180,7 +183,8 @@ def software_ld(name, description, url, image, keywords):
     }
     if OPEN_SOURCE:
         ld['license'] = 'https://opensource.org/licenses/MIT'
-        ld['sameAs'] = [REPO_URL]
+        ld['sameAs'] = [CODE_URL]
+        ld['codeRepository'] = CODE_URL
     return ld
 
 
@@ -214,7 +218,7 @@ def toolswitch_page():
     )
     steps = ''.join(f'<li>{s}</li>' for s in app['steps'])
     faq = ''.join(f'<details><summary>{html.escape(q)}</summary><p>{html.escape(a)}</p></details>' for q, a in app['faq'])
-    code = f'<section class="wrap"><p>Source code, issues and release notes: <a href="{REPO_URL}">github.com/{REPO}</a></p></section>' if OPEN_SOURCE else ''
+    code = f'<section class="wrap"><p>Source code and issues: <a href="{CODE_URL}">github.com/{CODE}</a> · downloads: <a href="{REPO_URL}/releases">github.com/{REPO}</a></p></section>' if OPEN_SOURCE else ''
     return f'''{head(app['title'], app['description'], url, 'toolswitch-social.png', ld + '<meta name="keywords" content="' + html.escape(app['keywords']) + '">' + chr(10))}
 <body class="toolswitch">
 {nav('toolswitch')}
@@ -491,7 +495,7 @@ ES = {
         ('¿Cómo paso un audio de WhatsApp a texto en la computadora?', 'Guardá el audio o el video (o descargalo desde WhatsApp Web), abrí Audio a texto en toolswitch y arrastralo. En unos segundos tenés el texto, sin subirlo a ninguna página.'),
         ('¿Puedo quitar el fondo de una foto sin internet?', 'Sí. toolswitch usa un modelo de IA (BiRefNet) que se descarga una vez y después funciona sin conexión, sin marca de agua ni límites.'),
         ('¿Sube mis archivos a algún lado?', 'No. Todo corre en tu computadora: fotos, audios y capturas nunca salen de tu PC.'),
-        ('¿Es gratis?', 'Sí, es gratis, sin cuenta y sin publicidad. Si te sirve, podés invitarme un cafecito.'),
+        ('¿Es gratis?', 'Sí, es gratis, sin cuenta y sin publicidad, y el código es abierto (licencia MIT, en GitHub). Si te sirve, podés invitarme un cafecito.'),
         ('¿Funciona en Linux?', 'Sí, en Ubuntu y otras distribuciones, igual que en Windows y Mac. Es una alternativa a PowerToys, que solo existe para Windows.'),
         ('¿Cuánto pesa?', 'Unos 15 MB, y usa unos 90 MB de memoria y casi nada de procesador mientras espera en la bandeja.'),
     ],
@@ -516,7 +520,7 @@ def es_page():
 <img class="icon" src="/img/toolswitch-icon.png" alt="ícono de toolswitch" width="96" height="96">
 <h1>toolswitch: herramientas con IA que corren en tu computadora</h1>
 <p class="tagline">{ES['tagline']}</p>
-{download_box('Descargar toolswitch', 'Windows, macOS y Linux', 'Gratis · sin cuenta · sin publicidad')}
+{download_box('Descargar toolswitch', 'Windows, macOS y Linux', 'Gratis · código abierto · sin cuenta')}
 <div class="shot"><img src="/img/toolswitch-screenshot.png" alt="Captura de toolswitch con la lista de herramientas"></div>
 </div>
 
@@ -580,7 +584,7 @@ def llms_txt():
         f'- Download: {REPO_URL}/releases/latest',
     ]
     if OPEN_SOURCE:
-        lines.append(f'- Source: {REPO_URL}')
+        lines.append(f'- Source code (MIT): {CODE_URL}')
     lines += [f'- Compared with Microsoft PowerToys: {SITE}/{POWERTOYS["slug"]}/', f'- Full text of the site: {SITE}/llms-full.txt', f'- En español: {SITE}/es/']
     lines += ['', '## Tools', '']
     lines += [f'- [{t}]({SITE}{TOOL_URL[t]}): {d}' for _, t, d in a['features']]

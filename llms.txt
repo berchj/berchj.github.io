@@ -4,6 +4,7 @@
 
 - Website: https://berchj.github.io/toolswitch/
 - Download: https://github.com/berchj/toolswitch-releases/releases/latest
+- Source code (MIT): https://github.com/berchj/toolswitch
 - Compared with Microsoft PowerToys: https://berchj.github.io/powertoys-alternative/
 - Full text of the site: https://berchj.github.io/llms-full.txt
 - En español: https://berchj.github.io/es/
@@ -28,7 +29,7 @@
 - Is it like Microsoft PowerToys? It’s in the same spirit, but it works the same on Windows, macOS and Linux, and it focuses on everyday tasks instead of developer tools.
 - Can it transcribe WhatsApp voice notes and videos? Yes. Save them to your computer and drag them into Audio to text; it reads Spanish, English and about 100 other languages.
 - How heavy is it? The program is about 15 MB and uses about 90 MB of memory and almost no processor while it waits in the tray. A tool that’s off does nothing at all.
-- Is toolswitch free? Yes, it’s free to download and use. No account, no ads. If it helps you, you can support it with a coffee.
+- Is toolswitch free and open source? Yes. It’s free, with no account and no ads, and its code is open source under the MIT license on GitHub. If it helps you, you can support it with a coffee.
 
 ## Earlier apps
 
