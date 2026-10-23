@@ -134,7 +134,7 @@ def head(title, description, url, image, extra=''):
 
 def nav(current=None):
     current_attr = ' aria-current=page' if current == 'toolswitch' else ''
-    return f'<nav><div class="wrap"><a class="home" href="/">berchj tools</a><a href="/toolswitch/"{current_attr}><img src="/img/toolswitch-64.png" alt="">toolswitch</a></div></nav>'
+    return f'<nav><div class="wrap"><a class="home" href="/"><img src="/img/toolswitch-64.png" alt="">toolswitch</a><a href="/toolswitch/"{current_attr}>The 14 tools</a><a href="{REPO_URL}/releases/latest">Download</a></div></nav>'
 
 
 def footer():
@@ -269,12 +269,12 @@ def legacy_page(app):
 
 
 def home_page():
-    title = 'berchj tools — toolswitch, 14 free everyday tools in one app for Windows, Mac and Linux'
+    title = 'toolswitch — 14 free everyday tools in one app for Windows, Mac and Linux'
     description = TOOLSWITCH['description']
     ld = {
         '@context': 'https://schema.org',
         '@type': 'ItemList',
-        'name': 'berchj tools',
+        'name': 'toolswitch',
         'itemListElement': [{'@type': 'ListItem', 'position': 1, 'url': f'{SITE}/toolswitch/', 'name': 'toolswitch'}],
     }
     return f'''{head(title, description, SITE + '/', 'toolswitch-social.png', '<script type="application/ld+json">' + json.dumps(ld) + '</script>' + chr(10))}
@@ -303,7 +303,7 @@ def home_page():
 def llms_txt():
     a = TOOLSWITCH
     lines = [
-        '# berchj tools',
+        '# toolswitch',
         '',
         f'> toolswitch: {a["description"]}',
         '',

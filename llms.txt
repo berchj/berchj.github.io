@@ -1,4 +1,4 @@
-# berchj tools
+# toolswitch
 
 > toolswitch: Free desktop app with 14 everyday tools: clipboard history, text from screen (OCR), wallpaper changer, reminders, breaks, image and PDF compressor, background remover, PDF signing, tidy downloads, backup, clean up, PC monitor, shut down timer and updates. Offline, no account. Windows, macOS and Linux.
 
