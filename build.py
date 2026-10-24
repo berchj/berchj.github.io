@@ -15,7 +15,7 @@ ROOT = Path(__file__).parent
 TODAY = date.today().isoformat()
 SUPPORT = 'https://cafecito.app/berchj'
 USDT = '0xc39dfD297BAf6ab305e267D153bf11d37de7faF6'
-VERSION = '0.1.3'
+VERSION = '0.1.4'
 N = len(TOOLS)
 # IndexNow (Bing, Yandex, Seznam...): the key file at the site root proves the site is ours.
 INDEXNOW_KEY = '7c1f4a2e9b8d4e60a3f5c2b1d0e9f8a7'
