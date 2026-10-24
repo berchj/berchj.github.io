@@ -58,6 +58,15 @@
 				a.textContent = label.replace(FOR, '');
 				return a;
 			}));
+		// How many download, and for which system (GoatCounter, if the page has it).
+		box.addEventListener('click', event => {
+			const link = event.target.closest('a');
+			const key = Object.keys(urls).find(k => urls[k] && urls[k] === link?.href);
+			if (key && window.goatcounter?.count) {
+				window.goatcounter.count({path: `download-${key}`, title: FILES[key].label, event: true});
+			}
+		});
+
 		const version = box.querySelector('.version');
 		if (version) {
 			version.textContent = `${es ? 'Versión' : 'Version'} ${release.tag_name.replace(/^v/, '')} · ${version.textContent}`;

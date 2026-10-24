@@ -100,6 +100,14 @@ LEGACY = [
     },
 ]
 
+# Visit counter (goatcounter.com): no cookies, nothing personal. The account's code, as in
+# https://CODE.goatcounter.com; empty = no counter. Downloads count as events (download.js).
+GOATCOUNTER = 'berchj'
+ANALYTICS = (f'<script data-goatcounter="https://{GOATCOUNTER}.goatcounter.com/count" async '
+             'src="https://gc.zgo.at/count.v4.js" crossorigin="anonymous" '
+             'integrity="sha384-nRw6qfbWyJha9LhsOtSb2YJDyZdKvvCFh0fJYlkquSFjUxp9FVNugbfy8q1jdxI+"></script>\n'
+             if GOATCOUNTER else '')
+
 THEME = '<script>try{const t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch{}</script>'
 
 
@@ -131,12 +139,16 @@ def head(title, description, url, image, extra=''):
 <link rel="icon" href="/img/toolswitch-64.png">
 <link rel="stylesheet" href="/style.css">
 {THEME}
-{extra}</head>'''
+{ANALYTICS}{extra}</head>'''
 
 
 def nav(current=None):
     current_attr = ' aria-current=page' if current == 'toolswitch' else ''
     return f'<nav><div class="wrap"><a class="home" href="/"><img src="/img/toolswitch-64.png" alt="">toolswitch</a><a class="wide" href="/toolswitch/"{current_attr}>The {N} tools</a><a class="wide" href="/powertoys-alternative/"{" aria-current=page" if current == "powertoys" else ""}>vs PowerToys</a><a href="{REPO_URL}/releases/latest">Download</a><a href="/es/" hreflang="es" lang="es">Español</a></div></nav>'
+
+
+COUNTED = ('<span>Visits are counted with <a href="https://www.goatcounter.com">GoatCounter</a>: no cookies, nothing personal.</span>\n'
+           if GOATCOUNTER else '')
 
 
 def footer():
@@ -147,7 +159,7 @@ def footer():
 <p class="tools">{tools}</p>
 <span>toolswitch is free · {made}{code}</span>
 <span>Like it? <a href="{SUPPORT}">☕ Buy me a coffee</a> · USDT (BEP20): <code>{USDT}</code></span>
-</div></footer>'''
+{COUNTED}</div></footer>'''
 
 
 def download_box(label='Download toolswitch', systems='Windows, macOS and Linux', note=LICENSE_TEXT):
