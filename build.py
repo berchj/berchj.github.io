@@ -35,7 +35,7 @@ TOOLSWITCH = {
     'name': 'toolswitch',
     'kind': 'Everyday tools in one app',
     'title': f'toolswitch — {N} free tools in one tiny app, with offline AI, for Windows, Mac and Linux',
-    'description': f'Free desktop app with {N} everyday tools: clipboard history, text from screen (OCR), AI background remover, audio and WhatsApp voice notes to text, image and PDF compressor, PDF signing, wallpapers, reminders, breaks and shut down timer. The AI runs on your computer: nothing is uploaded, no account. Windows, macOS and Linux.',
+    'description': f'Free desktop app with {N} everyday tools: clipboard history, text from screen (OCR), AI background remover, audio and WhatsApp voice notes to text, image and PDF compressor, PDF signing, wallpapers, reminders and breaks. The AI runs on your computer: nothing is uploaded, no account. Windows, macOS and Linux.',
     'tagline': f'{N} everyday tools in <strong>one tiny app</strong> that waits in your tray. The AI ones — remove backgrounds, audio to text, text from screen — <strong>run on your computer</strong>: nothing is uploaded, no account, no subscription.',
     'category': 'UtilitiesApplication',
     'keywords': 'powertoys alternative, powertoys for linux, powertoys for mac, offline ai tools, remove background offline, audio to text offline, whatsapp voice note to text, screen ocr, clipboard history, compress pdf offline, sign pdf, desktop utilities, linux utilities',
@@ -47,7 +47,7 @@ TOOLSWITCH = {
         'Change any shortcut by clicking it and pressing the keys you like.',
     ],
     'faq': [
-        ('What is toolswitch?', f'A small desktop app with {N} everyday tools — clipboard history, text from screen (OCR), wallpapers, reminders, breaks, file compressor, AI background remover, PDF signing, audio to text and a shut down timer — that waits in your tray.'),
+        ('What is toolswitch?', f'A small desktop app with {N} everyday tools — clipboard history, text from screen (OCR), wallpapers, reminders, breaks, file compressor, AI background remover, PDF signing and audio to text — that waits in your tray.'),
         ('Do the AI tools upload my files?', 'No. Background removal (BiRefNet), audio to text (OpenAI Whisper) and text from screen (PaddleOCR) run on your computer. Their models are downloaded once and then work offline. Your photos, recordings and screenshots never leave your computer.'),
         ('Is it like Microsoft PowerToys?', 'It’s in the same spirit, but it works the same on Windows, macOS and Linux, and it focuses on everyday tasks instead of developer tools.'),
         ('Can it transcribe WhatsApp voice notes and videos?', 'Yes. Save them to your computer and drag them into Audio to text; it reads Spanish, English and about 100 other languages.'),
@@ -501,7 +501,6 @@ ES = {
         ('🖼️', 'Fondos de pantalla', 'Elegís tus fondos y cambian con un atajo o cada tantos minutos.', 'wallpaper-changer'),
         ('⏰', 'Recordatorios', 'Escribís “en 20 min llamar a Juan” y te avisa. Sin calendario ni cuenta.', 'reminders'),
         ('☕', 'Pausas', 'Descanso de vista cada 20 minutos (20-20-20) o Pomodoro.', 'break-reminder'),
-        ('🔌', 'Apagado programado', 'Apagar, reiniciar o suspender más tarde, a una hora o al terminar una descarga.', 'shutdown-timer'),
     ],
     'faq': [
         ('¿Cómo paso un audio de WhatsApp a texto en la computadora?', 'Guardá el audio o el video (o descargalo desde WhatsApp Web), abrí Audio a texto en toolswitch y arrastralo. En unos segundos tenés el texto, sin subirlo a ninguna página.'),

@@ -459,7 +459,7 @@ ALL_TOOLS = [
 
 # The apps people compare toolswitch with.
 # Taken out of the app for now (2026-10-23): their pages redirect to /toolswitch/.
-HIDDEN = {'calendar', 'tidy-downloads', 'backup', 'clean-up', 'pc-monitor', 'security-check', 'jira', 'updates'}
+HIDDEN = {'calendar', 'tidy-downloads', 'backup', 'clean-up', 'pc-monitor', 'security-check', 'jira', 'updates', 'shutdown-timer'}
 TOOLS = [t for t in ALL_TOOLS if t['slug'] not in HIDDEN]
 
 # One line per tool, for the cards. The AI ones first in people's minds, so they say it.
@@ -473,7 +473,6 @@ SUMMARY = {
     'remove-background': 'Transparent PNG of any photo, with an AI model that runs on your computer.',
     'sign-pdf': 'Draw your signature once, drag it to its place on the page and sign PDFs without printing.',
     'audio-to-text': 'Voice notes, WhatsApp audios, recordings and videos into text, offline, in ~100 languages.',
-    'shutdown-timer': 'Shut down, restart or sleep later, at a time, or when the downloads finish.',
 }
 for t in TOOLS:
     t['summary'] = SUMMARY[t['slug']]
@@ -482,7 +481,7 @@ HIDDEN_TOOLS = [t for t in ALL_TOOLS if t['slug'] in HIDDEN]
 POWERTOYS = {
     'slug': 'powertoys-alternative',
     'title': 'PowerToys alternative for Mac and Linux (and Windows) — toolswitch',
-    'description': 'Microsoft PowerToys only runs on Windows. toolswitch is a free, tiny app with 10 everyday tools — clipboard history, OCR, AI background remover, audio to text, PDF tools and more — for Windows, macOS and Linux. Offline, no account.',
+    'description': 'Microsoft PowerToys only runs on Windows. toolswitch is a free, tiny app with 9 everyday tools — clipboard history, OCR, AI background remover, audio to text, PDF tools and more — for Windows, macOS and Linux. Offline, no account.',
     'h1': 'A PowerToys alternative for Mac and Linux',
     'intro': 'Microsoft PowerToys is great, but it only runs on Windows and most of its tools are for power users. toolswitch is in the same spirit — small tools you open with a shortcut — and works the same on Windows, macOS and Linux, focused on everyday tasks.',
     'rows': [
@@ -495,7 +494,7 @@ POWERTOYS = {
         ('Remove background', 'No', 'Yes, AI on your computer'),
         ('Sign PDF', 'No', 'Yes'),
         ('Audio to text', 'No', 'Yes, Whisper offline'),
-        ('Reminders, breaks, shutdown timer', 'Awake only', 'Yes'),
+        ('Reminders and breaks', 'Awake only', 'Yes'),
         ('Works offline, no account', 'Yes', 'Yes — even the AI tools'),
         ('Developer tools (FancyZones, Keyboard Manager…)', 'Yes', 'No'),
         ('Size', 'Hundreds of MB', 'About 15 MB'),

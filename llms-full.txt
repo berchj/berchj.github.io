@@ -1,6 +1,6 @@
 # toolswitch
 
-> toolswitch: Free desktop app with 10 everyday tools: clipboard history, text from screen (OCR), AI background remover, audio and WhatsApp voice notes to text, image and PDF compressor, PDF signing, wallpapers, reminders, breaks and shut down timer. The AI runs on your computer: nothing is uploaded, no account. Windows, macOS and Linux.
+> toolswitch: Free desktop app with 9 everyday tools: clipboard history, text from screen (OCR), AI background remover, audio and WhatsApp voice notes to text, image and PDF compressor, PDF signing, wallpapers, reminders and breaks. The AI runs on your computer: nothing is uploaded, no account. Windows, macOS and Linux.
 
 - Website: https://berchj.github.io/toolswitch/
 - Download: https://github.com/berchj/toolswitch-releases/releases/latest
@@ -20,11 +20,10 @@
 - [Remove background](https://berchj.github.io/toolswitch/remove-background/): Transparent PNG of any photo, with an AI model that runs on your computer.
 - [Sign PDF](https://berchj.github.io/toolswitch/sign-pdf/): Draw your signature once, drag it to its place on the page and sign PDFs without printing.
 - [Audio to text](https://berchj.github.io/toolswitch/audio-to-text/): Voice notes, WhatsApp audios, recordings and videos into text, offline, in ~100 languages.
-- [Shut down timer](https://berchj.github.io/toolswitch/shutdown-timer/): Shut down, restart or sleep later, at a time, or when the downloads finish.
 
 ## Questions
 
-- What is toolswitch? A small desktop app with 10 everyday tools — clipboard history, text from screen (OCR), wallpapers, reminders, breaks, file compressor, AI background remover, PDF signing, audio to text and a shut down timer — that waits in your tray.
+- What is toolswitch? A small desktop app with 9 everyday tools — clipboard history, text from screen (OCR), wallpapers, reminders, breaks, file compressor, AI background remover, PDF signing and audio to text — that waits in your tray.
 - Do the AI tools upload my files? No. Background removal (BiRefNet), audio to text (OpenAI Whisper) and text from screen (PaddleOCR) run on your computer. Their models are downloaded once and then work offline. Your photos, recordings and screenshots never leave your computer.
 - Is it like Microsoft PowerToys? It’s in the same spirit, but it works the same on Windows, macOS and Linux, and it focuses on everyday tasks instead of developer tools.
 - Can it transcribe WhatsApp voice notes and videos? Yes. Save them to your computer and drag them into Audio to text; it reads Spanish, English and about 100 other languages.
@@ -258,27 +257,6 @@ A: A 35-second video takes about 7 seconds on a normal laptop with the best-qual
 Q: Does it need a graphics card?
 A: No. It runs on the processor.
 
-## Shut down timer — Shutdown timer: turn off the PC later or when downloads finish
-
-URL: https://berchj.github.io/toolswitch/shutdown-timer/
-Shortcut: Super+Shift+Q on Linux, Ctrl+Alt+Q on Windows, Cmd+Option+Q on Mac.
-
-Leaving a download running at night? Falling asleep with a movie? Tell toolswitch when to turn the computer off.
-
-- In a while: In 30 minutes, an hour, or what you choose.
-- At a time: Shut down or sleep at 23:00.
-- When downloads finish: It waits until the download is complete.
-
-How to use it:
-1. Press the shortcut or open Shut down timer.
-2. Choose shut down, restart or sleep, and when.
-3. You can cancel any time.
-
-Alternative to: shutdown -s -t, Wise Auto Shutdown, sleep timer apps.
-
-Q: How do I shut down the PC after a download?
-A: Choose “when the downloads finish” in the Shut down timer. It works with any browser or download app.
-
 # A PowerToys alternative for Mac and Linux
 
 URL: https://berchj.github.io/powertoys-alternative/
@@ -296,7 +274,7 @@ Microsoft PowerToys is great, but it only runs on Windows and most of its tools 
 | Remove background | No | Yes, AI on your computer |
 | Sign PDF | No | Yes |
 | Audio to text | No | Yes, Whisper offline |
-| Reminders, breaks, shutdown timer | Awake only | Yes |
+| Reminders and breaks | Awake only | Yes |
 | Works offline, no account | Yes | Yes — even the AI tools |
 | Developer tools (FancyZones, Keyboard Manager…) | Yes | No |
 | Size | Hundreds of MB | About 15 MB |
